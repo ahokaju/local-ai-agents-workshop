@@ -18,6 +18,31 @@ pip install playwright httpx
 playwright install chromium
 ```
 
+### Windows WSL Users
+
+If you're running on Windows WSL with a virtual environment, you'll need to install additional system libraries for Chromium to work:
+
+```bash
+sudo apt update
+sudo apt install -y \
+    libnss3 \
+    libnspr4 \
+    libatk1.0-0t64 \
+    libatk-bridge2.0-0t64 \
+    libcups2t64 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libasound2t64 \
+    libpangocairo-1.0-0 \
+    libpango-1.0-0 \
+    libgtk-3-0t64
+```
+
+**Symptom**: Error mentioning missing `libnspr4.so` or similar library errors when the agent tries to launch the browser.
+
 ## Learning Objectives
 
 1. Understand when browser automation is needed vs simple HTTP requests
