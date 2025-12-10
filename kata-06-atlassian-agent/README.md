@@ -17,7 +17,7 @@ Build a Strands agent that integrates with Atlassian Jira and Confluence, enabli
 - Completed Kata 03 (Strands Tools)
 - Atlassian Cloud account (free tier works)
 - Atlassian API token
-- Python 3.10-3.12 (recommended: 3.12)
+- Python 3.12
 
 ## Time Estimate
 

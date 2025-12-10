@@ -16,7 +16,7 @@ Learn to extend Strands agents with custom tools, enabling them to perform actio
 
 - Completed Kata 02 (Strands Introduction)
 - Anthropic API key configured
-- Python 3.10-3.12 (recommended: 3.12)
+- Python 3.12
 
 ```bash
 pip install 'strands-agents[anthropic]' strands-agents-tools httpx

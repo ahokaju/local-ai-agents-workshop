@@ -19,11 +19,11 @@ This guide provides detailed setup instructions for all workshop prerequisites.
 ## 1. Python Environment
 
 ### Requirements
-- **Python 3.10, 3.11, or 3.12** (recommended: 3.12)
+- **Python 3.12** (required)
 - pip (Python package manager)
 - Virtual environment (recommended)
 
-> **Important**: Python 3.13+ is too new and lacks pre-built wheels for many ML packages (pandas, numpy, etc.). Python 3.9 may work but has limited testing.
+> **Important**: Python 3.13+ is too new and lacks pre-built wheels for many ML packages. Python 3.10/3.11 may have compatibility issues with some dependencies. Python 3.12 is required for this workshop.
 
 ### Check Available Python Versions
 
@@ -310,17 +310,14 @@ def check_python():
     print("1. Python Version")
     print(f"   Version: {sys.version}")
     if sys.version_info >= (3, 13):
-        print("   ⚠️  Python 3.13+ detected - too new, may have install issues")
-        print("      Recommended: Python 3.10, 3.11, or 3.12")
+        print("   ❌ Python 3.13+ detected - too new, may have install issues")
+        print("      Required: Python 3.12")
         return False
-    elif sys.version_info >= (3, 10):
-        print("   ✅ Python 3.10-3.12 detected (recommended)")
-        return True
-    elif sys.version_info >= (3, 9):
-        print("   ⚠️  Python 3.9 detected - should work but 3.10+ recommended")
+    elif sys.version_info[:2] == (3, 12):
+        print("   ✅ Python 3.12 detected")
         return True
     else:
-        print("   ❌ Python 3.10+ required")
+        print("   ❌ Python 3.12 required")
         return False
 
 def check_anthropic():

@@ -14,7 +14,7 @@ Learn to use the Anthropic API directly for interacting with Claude models, unde
 
 ## Prerequisites
 
-- Python 3.10-3.12 (recommended: 3.12)
+- Python 3.12
 - Anthropic API key (get one at https://console.anthropic.com/)
 - Basic Python knowledge
 

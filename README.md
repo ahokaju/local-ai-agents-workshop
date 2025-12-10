@@ -71,7 +71,7 @@ This session complements the main AWS Bedrock workshop by:
 ## Prerequisites
 
 ### Required
-- Python 3.10-3.12 (recommended: 3.12)
+- Python 3.12
 - Anthropic API key ([get one here](https://console.anthropic.com/))
 - Basic Python knowledge
 

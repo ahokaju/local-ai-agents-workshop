@@ -16,7 +16,7 @@ Learn to build AI agents using the Strands Agents SDK with Anthropic as the mode
 
 - Completed Kata 01 (Anthropic API Basics)
 - Anthropic API key configured
-- Python 3.10-3.12 (recommended: 3.12)
+- Python 3.12
 
 ## Time Estimate
 
