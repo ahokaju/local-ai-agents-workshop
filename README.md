@@ -7,11 +7,12 @@ This workshop teaches you to build AI agents locally using:
 - **Strands Agents SDK** (open-source agent framework)
 - **Local RAG** with LlamaIndex and HuggingFace embeddings
 - **Atlassian Integration** (Jira/Confluence)
+- **GitHub Integration** (PR workflows with PyGithub)
 - **MCP Protocol** for standardized tool integration
 
-**Duration**: ~4-4.5 hours
+**Duration**: ~4.5-5 hours
 **Level**: Beginner to Intermediate
-**Format**: 7 hands-on katas with progressive difficulty
+**Format**: 8 hands-on katas with progressive difficulty
 
 ---
 
@@ -63,6 +64,14 @@ This session complements the main AWS Bedrock workshop by:
 │     ⭐⭐            ⭐⭐⭐                                                 │
 │    40 min          45 min                                               │
 │                                                                          │
+│  Kata 08                                                                │
+│  ┌──────────┐                                                          │
+│  │ GitHub   │                                                          │
+│  │ PR Agent │                                                          │
+│  └──────────┘                                                          │
+│     ⭐⭐                                                                 │
+│    35 min                                                               │
+│                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -82,6 +91,10 @@ This session complements the main AWS Bedrock workshop by:
 ### For MCP Kata (07)
 - Uses the included `mcp_server.py` (no additional setup required)
 - Optional: Node.js v18+ (for official Atlassian MCP)
+
+### For GitHub Kata (08)
+- GitHub account
+- GitHub Personal Access Token with `repo` scope ([create here](https://github.com/settings/tokens))
 
 ---
 
@@ -126,6 +139,7 @@ python solution.py
 | 05 | RAG Agent | RAG as tool, knowledge-augmented agent | 40-50 min | ⭐⭐⭐ |
 | 06 | Atlassian Agent | Jira/Confluence API, productivity tools | 35-45 min | ⭐⭐ |
 | 07 | Atlassian MCP | MCP protocol, standardized tools | 40-50 min | ⭐⭐⭐ |
+| 08 | GitHub PR Agent | GitHub API, PR workflows, PyGithub | 30-40 min | ⭐⭐ |
 
 ---
 
@@ -169,11 +183,18 @@ local-agents/
 │   ├── starter.py
 │   └── solution.py
 │
-└── kata-07-atlassian-mcp/
+├── kata-07-atlassian-mcp/
+│   ├── README.md
+│   ├── mcp_server.py        # Simple HTTP MCP server
+│   ├── starter.py
+│   └── solution.py
+│
+└── kata-08-github-pr-agent/
     ├── README.md
-    ├── mcp_server.py        # Simple HTTP MCP server
+    ├── github_tools.py      # Reusable GitHub tools module
     ├── starter.py
-    └── solution.py
+    ├── solution.py
+    └── test_github_tools.py # Unit tests
 ```
 
 ---
