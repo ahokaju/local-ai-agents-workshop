@@ -49,7 +49,7 @@ def setup_knowledge_base():
     )
 
     print("   Creating query engine with Claude...")
-    llm = Anthropic(model="claude-3-5-haiku-20241022")
+    llm = Anthropic(model="claude-haiku-4-5-20251001")
     query_engine = index.as_query_engine(
         llm=llm,
         similarity_top_k=3
@@ -210,7 +210,7 @@ def get_weather_comfort_level(temperature_c: float, humidity: float) -> str:
 def create_weather_agent():
     """Create the RAG-enhanced weather agent."""
     model = AnthropicModel(
-        model_id="claude-3-5-haiku-20241022",
+        model_id="claude-haiku-4-5-20251001",
         max_tokens=1024
     )
 

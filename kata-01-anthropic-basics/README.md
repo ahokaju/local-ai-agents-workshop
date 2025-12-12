@@ -48,7 +48,7 @@ from anthropic import Anthropic
 
 client = Anthropic()  # Uses ANTHROPIC_API_KEY env var
 response = client.messages.create(
-    model="claude-3-5-haiku-20241022",
+    model="claude-haiku-4-5-20251001",
     max_tokens=1024,
     messages=[
         {"role": "user", "content": "Hello!"}
@@ -107,7 +107,7 @@ client = Anthropic()
 
 # Send a simple message
 response = client.messages.create(
-    model="claude-3-5-haiku-20241022",
+    model="claude-haiku-4-5-20251001",
     max_tokens=1024,
     messages=[
         {"role": "user", "content": "What is the capital of France?"}
@@ -122,7 +122,7 @@ print(response.content[0].text)
 
 ```python
 response = client.messages.create(
-    model="claude-3-5-haiku-20241022",
+    model="claude-haiku-4-5-20251001",
     max_tokens=1024,
     system="You are a helpful weather assistant. Be concise.",
     messages=[
@@ -136,7 +136,7 @@ response = client.messages.create(
 ```python
 # Streaming for real-time output
 with client.messages.stream(
-    model="claude-3-5-haiku-20241022",
+    model="claude-haiku-4-5-20251001",
     max_tokens=1024,
     messages=[{"role": "user", "content": "Tell me about clouds."}]
 ) as stream:
@@ -149,7 +149,7 @@ print()  # New line at end
 
 ```python
 response = client.messages.create(
-    model="claude-3-5-haiku-20241022",
+    model="claude-haiku-4-5-20251001",
     max_tokens=1024,
     messages=[{"role": "user", "content": "Hello!"}]
 )
@@ -171,7 +171,7 @@ from anthropic import APIError, AuthenticationError, RateLimitError
 
 try:
     response = client.messages.create(
-        model="claude-3-5-haiku-20241022",
+        model="claude-haiku-4-5-20251001",
         max_tokens=1024,
         messages=[{"role": "user", "content": "Hello!"}]
     )

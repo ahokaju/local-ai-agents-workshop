@@ -61,7 +61,7 @@ def create_query_engine(index):
     # Hint: from llama_index.llms.anthropic import Anthropic
 
     # TODO 8: Create LLM and query engine
-    # Hint: llm = Anthropic(model="claude-3-5-haiku-20241022")
+    # Hint: llm = Anthropic(model="claude-haiku-4-5-20251001")
     # Hint: query_engine = index.as_query_engine(llm=llm)
     query_engine = None
 

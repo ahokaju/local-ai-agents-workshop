@@ -374,7 +374,7 @@ def list_confluence_spaces() -> str:
 def create_atlassian_agent():
     """Create the Atlassian agent with Jira and Confluence tools."""
     model = AnthropicModel(
-        model_id="claude-3-5-haiku-20241022",
+        model_id="claude-haiku-4-5-20251001",
         max_tokens=1024
     )
 

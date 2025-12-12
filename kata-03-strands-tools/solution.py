@@ -332,7 +332,7 @@ def get_webpage_title(url: str) -> str:
 def create_agent_with_tools():
     """Create a Strands agent with all defined tools."""
     model = AnthropicModel(
-        model_id="claude-3-5-haiku-20241022",
+        model_id="claude-haiku-4-5-20251001",
         max_tokens=1024
     )
 
@@ -367,7 +367,7 @@ When using tool results, incorporate them naturally into your response."""
 def create_weather_agent():
     """Create a specialized weather-focused agent."""
     model = AnthropicModel(
-        model_id="claude-3-5-haiku-20241022",
+        model_id="claude-haiku-4-5-20251001",
         max_tokens=1024
     )
 

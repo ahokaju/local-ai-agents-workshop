@@ -90,7 +90,7 @@ def create_query_engine(index, llm=None):
     - Returns the generated answer
     """
     if llm is None:
-        llm = Anthropic(model="claude-3-5-haiku-20241022")
+        llm = Anthropic(model="claude-haiku-4-5-20251001")
 
     query_engine = index.as_query_engine(
         llm=llm,

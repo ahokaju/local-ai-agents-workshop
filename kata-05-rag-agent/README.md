@@ -186,7 +186,7 @@ from strands import Agent
 from strands.models.anthropic import AnthropicModel
 
 model = AnthropicModel(
-    model_id="claude-3-5-haiku-20241022",
+    model_id="claude-haiku-4-5-20251001",
     max_tokens=1024
 )
 

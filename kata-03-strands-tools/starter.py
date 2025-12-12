@@ -164,7 +164,7 @@ def fetch_webpage(url: str, extract_text: bool = True) -> str:
 def create_agent_with_tools():
     """Create a Strands agent with all defined tools."""
     # TODO 7: Create model and agent with tools
-    # model = AnthropicModel(model_id="claude-3-5-haiku-20241022", max_tokens=1024)
+    # model = AnthropicModel(model_id="claude-haiku-4-5-20251001", max_tokens=1024)
     # agent = Agent(
     #     model=model,
     #     tools=[get_weather, calculate, get_current_time, convert_temperature, fetch_webpage],

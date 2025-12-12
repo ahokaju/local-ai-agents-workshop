@@ -100,7 +100,7 @@ from strands.models.anthropic import AnthropicModel
 
 # Create the model provider
 model = AnthropicModel(
-    model_id="claude-3-5-haiku-20241022",
+    model_id="claude-haiku-4-5-20251001",
     max_tokens=1024
 )
 
@@ -116,7 +116,7 @@ print(response)
 
 ```python
 model = AnthropicModel(
-    model_id="claude-3-5-haiku-20241022",
+    model_id="claude-haiku-4-5-20251001",
     max_tokens=1024,
     params={
         "temperature": 0.7,  # Control randomness
@@ -210,7 +210,7 @@ Sonnet (balanced): [balanced response]
 # Direct API (from Kata 01)
 client = Anthropic()
 response = client.messages.create(
-    model="claude-3-5-haiku-20241022",
+    model="claude-haiku-4-5-20251001",
     messages=[{"role": "user", "content": "Hello"}]
 )
 

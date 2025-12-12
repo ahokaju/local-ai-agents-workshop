@@ -155,7 +155,7 @@ index = VectorStoreIndex.from_documents(
 ```python
 from llama_index.llms.anthropic import Anthropic
 
-llm = Anthropic(model="claude-3-5-haiku-20241022")
+llm = Anthropic(model="claude-haiku-4-5-20251001")
 
 query_engine = index.as_query_engine(
     llm=llm,

@@ -15,13 +15,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Default model configuration
-DEFAULT_MODEL = "claude-3-5-haiku-20241022"  # Fast, cost-effective for workshop
+DEFAULT_MODEL = "claude-haiku-4-5-20251001"  # Fast, cost-effective for workshop
 COMPARISON_MODEL = "claude-sonnet-4-20250514"  # For model comparison demo
 
 # Model pricing (per million tokens)
 MODEL_PRICING = {
     "claude-sonnet-4-20250514": {"input": 3.00, "output": 15.00, "name": "Sonnet 4"},
-    "claude-3-5-haiku-20241022": {"input": 0.80, "output": 4.00, "name": "Haiku 3.5"},
+    "claude-haiku-4-5-20251001": {"input": 0.80, "output": 4.00, "name": "Haiku 4.5"},
 }
 
 
