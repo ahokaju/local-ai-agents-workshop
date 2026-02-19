@@ -77,6 +77,8 @@ python3.12 -m venv venv
 
 # Windows (adjust path to your Python 3.12 installation):
 py -3.12 -m venv venv
+# Windows (if installed via Microsoft Store, use python instead of py):
+python -m venv venv
 
 # Activate the virtual environment
 # macOS/Linux:
