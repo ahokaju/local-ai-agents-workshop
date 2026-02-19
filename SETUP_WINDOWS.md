@@ -146,6 +146,18 @@ $env:GITHUB_TOKEN = "your-github-token"
 
 > Variables set this way are lost when you close PowerShell.
 
+### Temporary (CMD session only)
+
+```cmd
+set ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
+set ATLASSIAN_URL=https://your-domain.atlassian.net
+set ATLASSIAN_EMAIL=your-email@example.com
+set ATLASSIAN_API_TOKEN=your-token
+set GITHUB_TOKEN=your-github-token
+```
+
+> **CMD warning**: Do NOT add quotes around values. CMD includes the quotes as part of the value, which breaks authentication. Use `set VAR=value`, not `set VAR="value"`.
+
 ### Persistent (recommended)
 
 Use a `.env` file in the workshop root — `python-dotenv` loads it automatically in each kata:
