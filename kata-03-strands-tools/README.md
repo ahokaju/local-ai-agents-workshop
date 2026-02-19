@@ -20,6 +20,7 @@ Learn to extend Strands agents with custom tools, enabling them to perform actio
 
 ```bash
 pip install 'strands-agents[anthropic]' strands-agents-tools httpx
+# Windows: pip install "strands-agents[anthropic]" strands-agents-tools httpx
 ```
 
 ## Time Estimate

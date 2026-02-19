@@ -90,6 +90,7 @@ Build a Python script that:
 
 ```bash
 pip install 'strands-agents[anthropic]' strands-agents-tools
+# Windows: pip install "strands-agents[anthropic]" strands-agents-tools
 ```
 
 ### Step 2: Create a Basic Agent

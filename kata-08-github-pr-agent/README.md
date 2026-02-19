@@ -23,6 +23,7 @@ Your organization needs to automate the process of updating Open Source Software
 ```bash
 # Install dependencies
 pip install 'strands-agents[anthropic]' PyGithub python-dotenv
+# Windows: pip install "strands-agents[anthropic]" PyGithub python-dotenv
 
 # Set environment variables (macOS/Linux)
 export ANTHROPIC_API_KEY="your-anthropic-api-key"
