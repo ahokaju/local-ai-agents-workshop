@@ -24,9 +24,13 @@ Your organization needs to automate the process of updating Open Source Software
 # Install dependencies
 pip install 'strands-agents[anthropic]' PyGithub python-dotenv
 
-# Set environment variables
+# Set environment variables (macOS/Linux)
 export ANTHROPIC_API_KEY="your-anthropic-api-key"
 export GITHUB_TOKEN="your-github-token"  # Needs 'repo' scope
+# Windows CMD (no quotes): set ANTHROPIC_API_KEY=your-anthropic-api-key
+#                           set GITHUB_TOKEN=your-github-token
+# Windows PowerShell: $env:ANTHROPIC_API_KEY="your-anthropic-api-key"
+#                     $env:GITHUB_TOKEN="your-github-token"
 ```
 
 ### Creating a GitHub Token

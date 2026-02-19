@@ -90,8 +90,10 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install dependencies
 pip install anthropic python-dotenv
 
-# Set your API key
+# Set your API key (macOS/Linux)
 export ANTHROPIC_API_KEY="your-key-here"
+# Windows CMD (no quotes): set ANTHROPIC_API_KEY=your-key-here
+# Windows PowerShell: $env:ANTHROPIC_API_KEY="your-key-here"
 # Or create a .env file with: ANTHROPIC_API_KEY=your-key-here
 ```
 
