@@ -53,11 +53,23 @@ Atlassian Cloud uses API tokens for authentication:
 4. Copy and save the token securely
 
 ```bash
-# Set environment variables
+# macOS/Linux
 export ATLASSIAN_URL="https://your-domain.atlassian.net"
 export ATLASSIAN_EMAIL="your-email@example.com"
 export ATLASSIAN_API_TOKEN="your-api-token"
+
+# Windows CMD
+set ATLASSIAN_URL=https://your-domain.atlassian.net
+set ATLASSIAN_EMAIL=your-email@example.com
+set ATLASSIAN_API_TOKEN=your-api-token
+
+# Windows PowerShell
+$env:ATLASSIAN_URL="https://your-domain.atlassian.net"
+$env:ATLASSIAN_EMAIL="your-email@example.com"
+$env:ATLASSIAN_API_TOKEN="your-api-token"
 ```
+
+> **Windows tip**: Variables set with `set` or `$env:` last only for the current session. Use a `.env` file in the kata folder to persist them — `python-dotenv` loads it automatically.
 
 ---
 
