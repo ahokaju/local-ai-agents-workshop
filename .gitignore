@@ -82,3 +82,6 @@ logs/
 *.bak
 *.tmp
 *.temp
+
+# Claude Code
+CLAUDE.md

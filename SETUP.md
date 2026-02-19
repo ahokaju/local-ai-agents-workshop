@@ -2,6 +2,8 @@
 
 This guide provides detailed setup instructions for all workshop prerequisites.
 
+> **Windows users**: See [SETUP_WINDOWS.md](SETUP_WINDOWS.md) for Windows-specific steps, terminal requirements, and fixes for common pip install failures.
+
 ---
 
 ## Table of Contents
