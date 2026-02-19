@@ -98,6 +98,11 @@ This session complements the main AWS Bedrock workshop by:
 
 ---
 
+## Setup
+
+For detailed setup instructions see [SETUP.md](SETUP.md).
+**Windows users**: see [SETUP_WINDOWS.md](SETUP_WINDOWS.md) for terminal requirements, PATH setup, and pip install fixes.
+
 ## Quick Start
 
 ```bash
