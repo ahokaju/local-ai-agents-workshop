@@ -58,7 +58,7 @@ export ATLASSIAN_URL="https://your-domain.atlassian.net"
 export ATLASSIAN_EMAIL="your-email@example.com"
 export ATLASSIAN_API_TOKEN="your-api-token"
 
-# Windows CMD
+# Windows CMD — no quotes around values!
 set ATLASSIAN_URL=https://your-domain.atlassian.net
 set ATLASSIAN_EMAIL=your-email@example.com
 set ATLASSIAN_API_TOKEN=your-api-token
@@ -68,6 +68,8 @@ $env:ATLASSIAN_URL="https://your-domain.atlassian.net"
 $env:ATLASSIAN_EMAIL="your-email@example.com"
 $env:ATLASSIAN_API_TOKEN="your-api-token"
 ```
+
+> **Windows CMD warning**: Do NOT add quotes around values in `set` commands. CMD includes the quotes as part of the value, which breaks authentication. Use `set VAR=value`, not `set VAR="value"`.
 
 > **Windows tip**: Variables set with `set` or `$env:` last only for the current session. Use a `.env` file in the kata folder to persist them — `python-dotenv` loads it automatically.
 
