@@ -21,7 +21,7 @@ Set the following two variables before running the script:
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `AWS_BEARER_TOKEN_BEDROCK` | Your Bedrock API key | `aws-bedrock-xxx...` |
-| `AWS_REGION` | AWS region where the key was created | `eu-west-1` |
+| `AWS_REGION` | AWS region where the key was created | `eu-central-1` |
 
 `boto3` picks up both variables automatically — no additional AWS credential files or IAM configuration are needed.
 
@@ -29,21 +29,21 @@ Set the following two variables before running the script:
 
 ```bash
 export AWS_BEARER_TOKEN_BEDROCK="your-bedrock-api-key"
-export AWS_REGION="eu-west-1"
+export AWS_REGION="eu-central-1"
 ```
 
 ### Windows CMD
 
 ```cmd
 set AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-set AWS_REGION=eu-west-1
+set AWS_REGION=eu-central-1
 ```
 
 ### Windows PowerShell
 
 ```powershell
 $env:AWS_BEARER_TOKEN_BEDROCK="your-bedrock-api-key"
-$env:AWS_REGION="eu-west-1"
+$env:AWS_REGION="eu-central-1"
 ```
 
 ### .env file (alternative)
@@ -52,7 +52,7 @@ Create a `.env` file in the `kata-01-anthropic-basics/` directory:
 
 ```
 AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-AWS_REGION=eu-west-1
+AWS_REGION=eu-central-1
 ```
 
 The script calls `load_dotenv()` automatically, so the file is loaded at startup.
@@ -72,7 +72,7 @@ Common model IDs by region:
 
 | Region | Model ID prefix |
 |--------|-----------------|
-| EU (eu-west-1) | `eu.anthropic.claude-...` |
+| EU (eu-central-1) | `eu.anthropic.claude-...` |
 | US (us-east-1) | `us.anthropic.claude-...` |
 | AP (ap-southeast-1) | `ap.anthropic.claude-...` |
 
