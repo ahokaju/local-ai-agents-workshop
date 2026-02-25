@@ -5,26 +5,73 @@ This script mirrors solution.py but uses AWS Bedrock as the inference provider
 instead of the Anthropic API directly.
 
 Prerequisites:
-    pip install llama-index llama-index-llms-bedrock llama-index-embeddings-huggingface chromadb boto3 python-dotenv
+    pip install llama-index llama-index-embeddings-huggingface chromadb boto3 python-dotenv
 
     Set these environment variables before running:
         AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
         AWS_REGION=eu-central-1   (must match the region your key was created in)
 
     boto3 picks up both variables automatically — no extra configuration needed.
+    No extra llama-index LLM package is needed: BedrockLLM wraps boto3 directly.
 """
 
 import os
 from pathlib import Path
+from typing import Any
 from dotenv import load_dotenv
+import boto3
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
+from llama_index.core.llms import CustomLLM, CompletionResponse, CompletionResponseGen, LLMMetadata
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.llms.bedrock import Bedrock
 
 load_dotenv()
 
 AWS_REGION = os.getenv("AWS_REGION", "eu-central-1")
-DEFAULT_MODEL = "eu.anthropic.claude-haiku-4-5-20251001-v1:0"
+DEFAULT_MODEL = "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
+
+
+class BedrockLLM(CustomLLM):
+    """LlamaIndex LLM backed by AWS Bedrock via boto3 — no extra LLM package needed."""
+
+    model_id: str = DEFAULT_MODEL
+    region_name: str = AWS_REGION
+    max_new_tokens: int = 1024
+
+    @property
+    def metadata(self) -> LLMMetadata:
+        return LLMMetadata(
+            context_window=200000,
+            num_output=self.max_new_tokens,
+            model_name=self.model_id,
+        )
+
+    def complete(self, prompt: str, **kwargs: Any) -> CompletionResponse:
+        client = boto3.client("bedrock-runtime", region_name=self.region_name)
+        response = client.converse(
+            modelId=self.model_id,
+            messages=[{"role": "user", "content": [{"text": prompt}]}],
+            inferenceConfig={"maxTokens": self.max_new_tokens},
+        )
+        text = response["output"]["message"]["content"][0]["text"]
+        return CompletionResponse(text=text)
+
+    def stream_complete(self, prompt: str, **kwargs: Any) -> CompletionResponseGen:
+        client = boto3.client("bedrock-runtime", region_name=self.region_name)
+        response = client.converse_stream(
+            modelId=self.model_id,
+            messages=[{"role": "user", "content": [{"text": prompt}]}],
+            inferenceConfig={"maxTokens": self.max_new_tokens},
+        )
+
+        def gen() -> CompletionResponseGen:
+            full_text = ""
+            for event in response["stream"]:
+                if "contentBlockDelta" in event:
+                    delta_text = event["contentBlockDelta"]["delta"].get("text", "")
+                    full_text += delta_text
+                    yield CompletionResponse(text=full_text, delta=delta_text)
+
+        return gen()
 
 # Path to sample documents
 DOCS_PATH = Path(__file__).parent / "sample_data" / "weather_docs"
@@ -96,8 +143,8 @@ def create_query_engine(index, llm=None):
     - Returns the generated answer
     """
     if llm is None:
-        llm = Bedrock(
-            model=DEFAULT_MODEL,
+        llm = BedrockLLM(
+            model_id=DEFAULT_MODEL,
             region_name=AWS_REGION
         )
 
