@@ -102,6 +102,7 @@ This session complements the main AWS Bedrock workshop by:
 
 For detailed setup instructions see [SETUP.md](SETUP.md).
 **Windows users**: see [SETUP_WINDOWS.md](SETUP_WINDOWS.md) for terminal requirements, PATH setup, and pip install fixes.
+**Prefer Docker?** Skip Python setup entirely — see [`docker/DOCKER.md`](docker/DOCKER.md).
 
 ## Quick Start
 
