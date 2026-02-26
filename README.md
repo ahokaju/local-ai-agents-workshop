@@ -107,7 +107,7 @@ For detailed setup instructions see [SETUP.md](SETUP.md).
 
 ```bash
 # 1. Clone and navigate to this directory
-cd local-agents
+cd local-ai-agents-workshop
 
 # 2. Create virtual environment with Python 3.12
 # macOS (Homebrew):
@@ -151,7 +151,7 @@ python solution.py
 ## Folder Structure
 
 ```
-local-agents/
+local-ai-agents-workshop/
 ├── README.md               # This file
 ├── SETUP.md               # Detailed setup instructions
 ├── requirements.txt       # Python dependencies
