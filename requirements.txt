@@ -4,8 +4,8 @@
 # Core - Anthropic API
 anthropic>=0.40.0
 
-# Strands Agents SDK with Anthropic provider
-strands-agents[anthropic]>=0.1.0
+# Strands Agents SDK with Anthropic and Bedrock providers
+strands-agents[anthropic,bedrock]>=0.1.0
 strands-agents-tools>=0.2.0
 
 # Local RAG (programmatic option with LlamaIndex)
@@ -26,6 +26,9 @@ mcp>=1.0.0
 # Utilities
 python-dotenv>=1.0.0
 requests>=2.31.0
+
+# AWS Bedrock
+boto3>=1.26.0
 
 # Testing
 pytest>=7.0.0
