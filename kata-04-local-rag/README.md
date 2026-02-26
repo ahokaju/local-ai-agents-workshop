@@ -327,3 +327,20 @@ python -c "from sentence_transformers import SentenceTransformer; SentenceTransf
 - [RAG Explained (AWS)](https://aws.amazon.com/what-is/retrieval-augmented-generation/)
 - [HuggingFace Sentence Transformers](https://www.sbert.net/)
 - [ChromaDB Documentation](https://docs.trychroma.com/)
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** LlamaIndex has no built-in Bedrock LLM package, so you implement a custom `BedrockLLM(CustomLLM)` wrapper around boto3 — see the `BedrockLLM` class in `solution_bedrock.py`. HuggingFace embeddings are unchanged (free and local).

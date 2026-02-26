@@ -477,3 +477,20 @@ project = PROJ AND status = Open AND assignee = currentUser()
 - [Confluence Cloud REST API](https://developer.atlassian.com/cloud/confluence/rest/v1/)
 - [JQL Documentation](https://support.atlassian.com/jira-software-cloud/docs/use-advanced-search-with-jira-query-language-jql/)
 - [API Token Management](https://id.atlassian.com/manage-profile/security/api-tokens)
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** Only the model provider changes — `AnthropicModel` → `BedrockModel` from `strands.models.bedrock`; all Jira and Confluence tools are identical.

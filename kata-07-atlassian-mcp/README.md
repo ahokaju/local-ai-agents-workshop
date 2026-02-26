@@ -370,3 +370,9 @@ Error: Connection refused
 - [MCP Specification](https://modelcontextprotocol.io/)
 - [Atlassian REST API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/)
 - [Confluence REST API](https://developer.atlassian.com/cloud/confluence/rest/v1/)
+
+## AWS Bedrock Alternative
+
+No Bedrock version exists for this kata. The MCP transport layer (HTTP client/server) is provider-independent. If you want to use Bedrock with MCP, you would need to update the agent inside `mcp_server.py` separately — this is out of scope for the workshop.
+
+For Bedrock-based Atlassian integration without MCP, see kata-06 (`solution_bedrock.py`).

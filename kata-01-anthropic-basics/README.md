@@ -236,3 +236,20 @@ Token Usage:
 - [Anthropic Python SDK](https://github.com/anthropics/anthropic-sdk-python)
 - [Claude Model Pricing](https://www.anthropic.com/pricing)
 - [Messages API Reference](https://docs.anthropic.com/claude/reference/messages)
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** boto3 `client.converse()` replaces the Anthropic SDK; token counts come from `response["usage"]` with camelCase keys (`inputTokens`, `outputTokens`); streaming uses `client.converse_stream()` and iterates `response["stream"]`.

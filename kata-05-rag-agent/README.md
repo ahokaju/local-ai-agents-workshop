@@ -355,3 +355,20 @@ def search_weather_knowledge(query: str, min_relevance: float = 0.5) -> str:
 - [Strands Agents Documentation](https://strandsagents.com/)
 - [LlamaIndex Query Engine](https://docs.llamaindex.ai/en/stable/module_guides/querying/)
 - [RAG Best Practices](https://www.anthropic.com/research/rag-best-practices)
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** Two changes — (1) LlamaIndex requires a custom `BedrockLLM(CustomLLM)` wrapper around boto3 for the query engine (same as kata-04); (2) the Strands agent switches from `AnthropicModel` to `BedrockModel`. All tools are identical.

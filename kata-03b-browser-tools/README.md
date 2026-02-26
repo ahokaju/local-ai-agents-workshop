@@ -149,3 +149,20 @@ def take_screenshot(url: str, filename: str = "screenshot.png") -> str:
 ## Estimated Time
 
 45-60 minutes
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** Only the model provider changes — `AnthropicModel` → `BedrockModel` from `strands.models.bedrock`; all Playwright browser tools are identical.

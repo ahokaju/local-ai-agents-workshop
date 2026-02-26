@@ -200,3 +200,21 @@ After completing this kata:
 2. Add tools for PR comments and reviews
 3. Connect to Jenkins pipeline for automation
 4. Add Confluence integration for documentation
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+GITHUB_TOKEN=your-github-pat   # PAT with 'repo' scope
+```
+
+**What changes:** Only the model provider changes — `AnthropicModel` → `BedrockModel` from `strands.models.bedrock`; all GitHub tools in `github_tools.py` are identical.

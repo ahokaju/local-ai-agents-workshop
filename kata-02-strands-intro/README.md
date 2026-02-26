@@ -241,3 +241,20 @@ response = agent("Hello")  # Much simpler!
 - [Strands + Anthropic Guide](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/model-providers/anthropic/)
 - [Strands GitHub Repository](https://github.com/strands-agents/sdk-python)
 - [Agent Architecture Overview](https://aws.amazon.com/blogs/opensource/introducing-strands-agents-an-open-source-ai-agents-sdk/)
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** Only the model provider changes — `AnthropicModel` → `BedrockModel` from `strands.models.bedrock`; all agent logic and the model comparison demo are identical.

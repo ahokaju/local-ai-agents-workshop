@@ -382,3 +382,20 @@ def risky_operation(param: str) -> str:
 - [Strands Tools Documentation](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/tools/)
 - [Claude Tool Use Guide](https://docs.anthropic.com/claude/docs/tool-use)
 - [Python Type Hints](https://docs.python.org/3/library/typing.html)
+
+## AWS Bedrock Alternative
+
+To run this kata with AWS Bedrock instead of the Anthropic API directly:
+
+| File | Purpose |
+|------|---------|
+| `starter_bedrock.py` | Bedrock starter template with TODOs |
+| `solution_bedrock.py` | Complete Bedrock reference implementation |
+
+**Required environment variables:**
+```bash
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=eu-central-1   # must match the region your key was created in
+```
+
+**What changes:** Only the model provider changes — `AnthropicModel` → `BedrockModel` from `strands.models.bedrock`; all tool definitions (`@tool` decorator, docstrings, implementations) are identical.
