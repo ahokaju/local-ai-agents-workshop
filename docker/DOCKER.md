@@ -11,7 +11,7 @@ No Python installation needed. Just Docker.
 
 ```bash
 # 1. Clone the repo and enter the docker directory
-git clone <repo-url>
+git clone https://github.com/ahokaju/local-ai-agents-workshop.git
 cd local-ai-agents-workshop/docker
 
 # 2. Add your API key
