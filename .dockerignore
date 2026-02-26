@@ -1,0 +1,15 @@
+.git
+__pycache__
+*.pyc
+*.pyo
+chroma_db/
+storage/
+kata-03b-browser-tools/screenshots/
+.env
+.env.*
+venv/
+.venv/
+*.log
+CLAUDE.md
+SESSION_NOTES.md
+.pytest_cache/

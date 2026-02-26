@@ -1,0 +1,23 @@
+services:
+  workshop:
+    image: ghcr.io/${GITHUB_REPOSITORY:-local/workshop}:${WORKSHOP_IMAGE:-base}
+    container_name: workshop
+    stdin_open: true
+    tty: true
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "8000:8000"      # kata-07 MCP server
+    volumes:
+      - chroma_db:/workshop/kata-04-local-rag/chroma_db
+      - storage:/workshop/kata-04-local-rag/storage
+      - hf_cache:/root/.cache/huggingface
+      - screenshots:/workshop/kata-03b-browser-tools/screenshots
+    working_dir: /workshop
+
+volumes:
+  chroma_db:
+  storage:
+  hf_cache:
+  screenshots:

@@ -1,0 +1,33 @@
+ARG GITHUB_REPOSITORY=local/workshop
+FROM ghcr.io/${GITHUB_REPOSITORY}:base
+
+# Playwright system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libnss3 \
+    libnspr4 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    libasound2 \
+    libdrm2 \
+    libxfixes3 \
+    libx11-xcb1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Full Python packages with CPU-only PyTorch (saves ~350 MB vs default)
+RUN pip install --no-cache-dir \
+    --extra-index-url https://download.pytorch.org/whl/cpu \
+    -r requirements.txt
+
+# Playwright + Chromium browser
+RUN pip install --no-cache-dir playwright \
+    && playwright install chromium
+
+# Pre-download HuggingFace embedding model so kata-04/05 work offline
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
