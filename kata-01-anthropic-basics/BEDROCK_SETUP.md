@@ -66,15 +66,80 @@ python solution_bedrock.py
 
 ## Model Used
 
-The script uses `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` (a cross-region inference profile for EU). If your key was issued for a different region, update `DEFAULT_MODEL` and `AWS_REGION` accordingly.
+The scripts default to EU cross-region inference profiles (`eu-central-1`). If your Bedrock key was issued for a different region, you must update both `AWS_REGION` and `DEFAULT_MODEL` to match.
 
-Common model IDs by region:
+### Model IDs by Region
 
-| Region | Model ID prefix |
-|--------|-----------------|
-| EU (eu-central-1) | `eu.anthropic.claude-...` |
-| US (us-east-1) | `us.anthropic.claude-...` |
-| AP (ap-southeast-1) | `ap.anthropic.claude-...` |
+Cross-region inference profile IDs follow the pattern `<region-prefix>.anthropic.claude-<model>`:
+
+| Model | EU (eu-central-1) | US (us-east-1) | AP (ap-southeast-1) |
+|-------|-------------------|----------------|---------------------|
+| Claude Sonnet 4.5 | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` | `us.anthropic.claude-sonnet-4-5-20250929-v1:0` | `ap.anthropic.claude-sonnet-4-5-20250929-v1:0` |
+| Claude Haiku 4.5 | `eu.anthropic.claude-haiku-4-5-20251001-v1:0` | `us.anthropic.claude-haiku-4-5-20251001-v1:0` | `ap.anthropic.claude-haiku-4-5-20251001-v1:0` |
+| Claude Haiku 3 | `eu.anthropic.claude-3-haiku-20240307-v1:0` | `us.anthropic.claude-3-haiku-20240307-v1:0` | `ap.anthropic.claude-3-haiku-20240307-v1:0` |
+
+> **Important**: The region prefix in the model ID must match `AWS_REGION`. A key issued for `us-east-1` will not work with `eu.anthropic.*` model IDs and vice versa.
+
+---
+
+## Using us-east-1
+
+If your Bedrock key was created in `us-east-1`, set the following environment variables:
+
+### macOS / Linux
+
+```bash
+export AWS_BEARER_TOKEN_BEDROCK="your-bedrock-api-key"
+export AWS_REGION="us-east-1"
+```
+
+### Windows CMD
+
+```cmd
+set AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+set AWS_REGION=us-east-1
+```
+
+### Windows PowerShell
+
+```powershell
+$env:AWS_BEARER_TOKEN_BEDROCK="your-bedrock-api-key"
+$env:AWS_REGION="us-east-1"
+```
+
+### .env file
+
+```
+AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+AWS_REGION=us-east-1
+```
+
+### Update DEFAULT_MODEL in each script
+
+Every `solution_bedrock.py` has a `DEFAULT_MODEL` constant at the top. When using `us-east-1`, change the `eu.` prefix to `us.`:
+
+```python
+# EU (default)
+DEFAULT_MODEL = "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
+
+# US — change to this when using us-east-1
+DEFAULT_MODEL = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+```
+
+Files to update:
+
+| File | Current default model |
+|------|-----------------------|
+| `kata-01-anthropic-basics/solution_bedrock.py` | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` |
+| `kata-02-strands-intro/solution_bedrock.py` | `anthropic.claude-3-haiku-20240307-v1:0` (no prefix — already region-agnostic) |
+| `kata-03-strands-tools/solution_bedrock.py` | `anthropic.claude-3-haiku-20240307-v1:0` (no prefix — already region-agnostic) |
+| `kata-03b-browser-tools/solution_bedrock.py` | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` |
+| `kata-04-local-rag/solution_bedrock.py` | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` |
+| `kata-05-rag-agent/solution_bedrock.py` | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` |
+| `kata-06-atlassian-agent/solution_bedrock.py` | `eu.anthropic.claude-haiku-4-5-20251001-v1:0` |
+| `kata-08-github-pr-agent/solution_bedrock.py` | `eu.anthropic.claude-haiku-4-5-20251001-v1:0` |
+
+> **Tip**: `anthropic.claude-3-haiku-20240307-v1:0` (without a region prefix) is a base model ID that can be used directly in any region without a cross-region inference profile.
 
 ## Troubleshooting
 

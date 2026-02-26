@@ -66,7 +66,7 @@ sudo apt update && sudo apt install python3.12 python3.12-venv
 
 ```bash
 # Navigate to workshop directory
-cd local-agents
+cd local-ai-agents-workshop
 
 # Create virtual environment with specific Python version
 # macOS with Homebrew:
@@ -122,7 +122,7 @@ set ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
 
 **Option B: .env File (Recommended for Windows)**
 
-Create a `.env` file in the `local-agents` directory:
+Create a `.env` file in the `local-ai-agents-workshop` directory:
 
 ```bash
 # .env
