@@ -28,6 +28,30 @@ docker exec -it workshop bash
 python kata-01-anthropic-basics/solution.py
 ```
 
+## Using AWS Bedrock Instead of Anthropic API
+
+The Docker image supports Bedrock out of the box. In your `.env` file, set the
+Bedrock variables instead of (or alongside) `ANTHROPIC_API_KEY`:
+
+```bash
+# docker/.env
+AWS_BEARER_TOKEN_BEDROCK=your-token-here
+AWS_REGION=us-east-1
+# For eu-central-1: set AWS_REGION=eu-central-1 and change the model ID
+# prefix from "us." to "eu." in each *_bedrock.py file you run.
+```
+
+Then run the `_bedrock.py` variants inside the container:
+
+```bash
+docker exec -it workshop bash
+python kata-01-anthropic-basics/solution_bedrock.py
+```
+
+You can have both keys set in `.env` — just choose which file to run.
+
+---
+
 ## Image Variants
 
 | Image | Size | Covers |

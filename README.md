@@ -81,7 +81,9 @@ This session complements the main AWS Bedrock workshop by:
 
 ### Required
 - Python 3.12
-- Anthropic API key ([get one here](https://console.anthropic.com/))
+- **One** of:
+  - Anthropic API key ([get one here](https://console.anthropic.com/)), **or**
+  - AWS Bedrock bearer token (runs `*_bedrock.py` variants instead)
 - Basic Python knowledge
 
 ### For Atlassian Katas (06-07)
@@ -103,14 +105,29 @@ This session complements the main AWS Bedrock workshop by:
 For detailed setup instructions see [SETUP.md](SETUP.md).
 **Windows users**: see [SETUP_WINDOWS.md](SETUP_WINDOWS.md) for terminal requirements, PATH setup, and pip install fixes.
 **Prefer Docker?** Skip Python setup entirely — see [`docker/DOCKER.md`](docker/DOCKER.md).
+**Using AWS Bedrock?** See the [Bedrock setup in SETUP.md](SETUP.md#2b-aws-bedrock-bearer-token).
 
 ## Quick Start
 
+> **Pick your path before you begin:**
+>
+> | Path | When to use |
+> |------|-------------|
+> | **[A — Anthropic API](#path-a--anthropic-api)** | You have an Anthropic API key (simplest) |
+> | **[B — AWS Bedrock](#path-b--aws-bedrock)** | You have an AWS Bedrock bearer token |
+> | **[C — Docker](#path-c--docker)** | You want to skip Python/pip setup entirely |
+>
+> Paths A and B use the same venv setup — A runs `solution.py`, B runs `solution_bedrock.py`.
+
+---
+
+### Path A — Anthropic API
+
 ```bash
-# 1. Clone and navigate to this directory
+# 1. Enter the workshop directory
 cd local-ai-agents-workshop
 
-# 2. Create virtual environment with Python 3.12
+# 2. Create virtual environment (Python 3.12 required)
 # macOS (Homebrew):
 /opt/homebrew/opt/python@3.12/bin/python3.12 -m venv venv
 # Linux: python3.12 -m venv venv
@@ -118,19 +135,59 @@ cd local-ai-agents-workshop
 
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 3. Verify Python version
-python --version  # Should be 3.12.x
-
-# 4. Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 5. Set up API key
-export ANTHROPIC_API_KEY="your-key-here"
+# 4. Set API key
+export ANTHROPIC_API_KEY="sk-ant-your-key-here"
 
-# 6. Start with Kata 01
+# 5. Start Kata 01
 cd kata-01-anthropic-basics
 python solution.py
 ```
+
+---
+
+### Path B — AWS Bedrock
+
+```bash
+# 1-3. Same venv setup as Path A
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 4. Set Bedrock credentials
+export AWS_BEARER_TOKEN_BEDROCK="your-bedrock-token"
+export AWS_REGION="us-east-1"
+# For eu-central-1: set AWS_REGION=eu-central-1 and change the model ID
+# prefix from "us." to "eu." in each *_bedrock.py file you run.
+
+# 5. Start Kata 01 (Bedrock variant)
+cd kata-01-anthropic-basics
+python solution_bedrock.py
+```
+
+---
+
+### Path C — Docker
+
+```bash
+# 1. Enter the docker directory
+cd local-ai-agents-workshop/docker
+
+# 2. Copy env file and fill in your key
+cp .env.example .env
+# Edit .env: set ANTHROPIC_API_KEY (Path A) or AWS_BEARER_TOKEN_BEDROCK (Path B)
+
+# 3. Start the container
+docker compose up -d
+
+# 4. Enter the container and run
+docker exec -it workshop bash
+python kata-01-anthropic-basics/solution.py          # Anthropic API
+# python kata-01-anthropic-basics/solution_bedrock.py  # AWS Bedrock
+```
+
+See [`docker/DOCKER.md`](docker/DOCKER.md) for full Docker instructions including image variants.
 
 ---
 

@@ -11,9 +11,12 @@ Prerequisites:
 
     Set these environment variables before running:
         AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-        AWS_REGION=eu-central-1   (must match the region your key was created in)
+        AWS_REGION=us-east-1   (must match the region your key was created in)
 
     boto3 picks up both variables automatically — no extra configuration needed.
+
+    To use eu-central-1: set AWS_REGION=eu-central-1 and change the model ID
+    prefix from "us." to "eu." (e.g. "eu.anthropic.claude-sonnet-4-5-20250929-v1:0").
 """
 
 import os

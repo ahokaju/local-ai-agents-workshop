@@ -10,9 +10,12 @@ Prerequisites:
 
     Set these environment variables before running:
         AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-        AWS_REGION=eu-central-1   (must match the region your key was created in)
+        AWS_REGION=us-east-1   (must match the region your key was created in)
 
     boto3 picks up both variables automatically — no extra configuration needed.
+
+    To use eu-central-1: set AWS_REGION=eu-central-1. The Haiku 3 model ID has
+    no region prefix and works in all regions as-is.
 """
 
 import os

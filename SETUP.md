@@ -9,7 +9,8 @@ This guide provides detailed setup instructions for all workshop prerequisites.
 ## Table of Contents
 
 1. [Python Environment](#1-python-environment)
-2. [Anthropic API Key](#2-anthropic-api-key)
+2. [Anthropic API Key](#2-anthropic-api-key) *(or 2b if using Bedrock)*
+2b. [AWS Bedrock Bearer Token](#2b-aws-bedrock-bearer-token) *(alternative to section 2)*
 3. [Installing Dependencies](#3-installing-dependencies)
 4. [Atlassian Setup (Katas 06-07)](#4-atlassian-setup)
 5. [MCP Server Setup (Kata 07)](#5-mcp-server-setup)
@@ -144,6 +145,57 @@ response = client.messages.create(
 )
 print("API key is valid!")
 ```
+
+---
+
+## 2b. AWS Bedrock Bearer Token
+
+> **Use this section instead of section 2** if you have an AWS Bedrock bearer token.
+> You do **not** need an Anthropic API key when using Bedrock.
+
+### Get Your Bearer Token
+
+AWS Bedrock bearer tokens are scoped to a region and issued by your AWS account
+administrator or created in the Bedrock console under **API access**.
+
+### Set the Environment Variables
+
+**Option A: Environment Variable (Recommended)**
+
+```bash
+# macOS/Linux — add to ~/.bashrc or ~/.zshrc
+export AWS_BEARER_TOKEN_BEDROCK="your-token-here"
+export AWS_REGION="us-east-1"
+
+# Windows PowerShell
+$env:AWS_BEARER_TOKEN_BEDROCK="your-token-here"
+$env:AWS_REGION="us-east-1"
+```
+
+**Option B: .env File**
+
+```bash
+# .env (in the workshop root)
+AWS_BEARER_TOKEN_BEDROCK=your-token-here
+AWS_REGION=us-east-1
+```
+
+> **eu-central-1 users**: Set `AWS_REGION=eu-central-1` and change the model ID
+> prefix from `"us."` to `"eu."` in each `*_bedrock.py` file you run
+> (e.g. `"eu.anthropic.claude-sonnet-4-5-20250929-v1:0"`).
+
+### Run Bedrock Variants
+
+Every kata has a `solution_bedrock.py` and `starter_bedrock.py` alongside the
+standard files. Run these instead of `solution.py` / `starter.py`:
+
+```bash
+cd kata-01-anthropic-basics
+python solution_bedrock.py
+```
+
+boto3 picks up `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` automatically — no
+extra configuration is needed.
 
 ---
 
@@ -495,8 +547,11 @@ python -c "from sentence_transformers import SentenceTransformer; SentenceTransf
 ### Environment Variables
 
 ```bash
-# Required
-export ANTHROPIC_API_KEY="sk-ant-..."
+# Required — choose ONE of:
+export ANTHROPIC_API_KEY="sk-ant-..."          # Anthropic API (Path A)
+# --- OR ---
+export AWS_BEARER_TOKEN_BEDROCK="your-token"   # AWS Bedrock (Path B)
+export AWS_REGION="us-east-1"                  # (eu-central-1 also valid — see section 2b)
 
 # For Atlassian katas (optional)
 export ATLASSIAN_URL="https://your-domain.atlassian.net"
@@ -516,9 +571,13 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Run a kata solution
+# Run a kata — Anthropic API
 cd kata-01-anthropic-basics
 python solution.py
+
+# Run a kata — AWS Bedrock
+cd kata-01-anthropic-basics
+python solution_bedrock.py
 
 # Verify setup
 python verify_setup.py
