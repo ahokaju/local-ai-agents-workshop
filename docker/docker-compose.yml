@@ -1,6 +1,6 @@
 services:
   workshop:
-    image: ghcr.io/${GITHUB_REPOSITORY:-local/workshop}:${WORKSHOP_IMAGE:-base}
+    image: ghcr.io/ahokaju/local-ai-agents-workshop:${WORKSHOP_IMAGE:-base}
     container_name: workshop
     stdin_open: true
     tty: true
