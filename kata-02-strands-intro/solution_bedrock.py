@@ -26,7 +26,7 @@ load_dotenv()
 # Default model configuration
 DEFAULT_MODEL = "anthropic.claude-3-haiku-20240307-v1:0"
 COMPARISON_MODEL = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
-AWS_REGION = os.getenv("AWS_REGION", "eu-central-1")
+AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 
 # Model pricing on Bedrock (per million tokens)
 MODEL_PRICING = {

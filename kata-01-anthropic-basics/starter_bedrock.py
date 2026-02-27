@@ -58,7 +58,7 @@ class Colors:
 
 # TODO 0: Implement get_client()
 # Hint: import boto3 at the top of the file
-# Hint: return boto3.client("bedrock-runtime", region_name=os.getenv("AWS_REGION", "eu-central-1"))
+# Hint: return boto3.client("bedrock-runtime", region_name=os.getenv("AWS_REGION", "us-east-1"))
 def get_client():
     """Create a Bedrock runtime client using env-var credentials."""
     # TODO: Create and return a boto3 bedrock-runtime client

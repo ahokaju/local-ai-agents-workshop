@@ -55,7 +55,7 @@ def get_client():
     """Create a Bedrock runtime client using env-var credentials."""
     return boto3.client(
         service_name="bedrock-runtime",
-        region_name=os.getenv("AWS_REGION", "eu-central-1")
+        region_name=os.getenv("AWS_REGION", "us-east-1")
     )
 
 
