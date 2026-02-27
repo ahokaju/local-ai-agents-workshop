@@ -27,7 +27,7 @@ from atlassian import Jira, Confluence
 load_dotenv()
 
 AWS_REGION = os.getenv("AWS_REGION", "eu-central-1")
-DEFAULT_MODEL = "eu.anthropic.claude-haiku-4-5-20251001-v1:0"
+DEFAULT_MODEL = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
 
 # Atlassian configuration
 ATLASSIAN_URL = os.getenv("ATLASSIAN_URL")

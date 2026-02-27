@@ -27,7 +27,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 AWS_REGION = os.getenv("AWS_REGION", "eu-central-1")
-DEFAULT_MODEL = "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
+DEFAULT_MODEL = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
 
 # Path to sample documents (reuse from Kata 04)
 DOCS_PATH = Path(__file__).parent.parent / "kata-04-local-rag" / "sample_data" / "weather_docs"

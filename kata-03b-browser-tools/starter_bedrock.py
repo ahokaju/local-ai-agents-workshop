@@ -27,7 +27,7 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 load_dotenv()
 
 AWS_REGION = os.getenv("AWS_REGION", "eu-central-1")
-DEFAULT_MODEL = "eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
+DEFAULT_MODEL = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
 
 # Create screenshots directory
 SCREENSHOTS_DIR = Path(__file__).parent / "screenshots"
