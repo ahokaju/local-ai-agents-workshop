@@ -74,6 +74,9 @@ storage/
 # Kata 09 runtime state (contains AWS resource IDs, gitignored per-participant)
 kata-09-bedrock-knowledge-base/kata09_state.json
 
+# Kata 11 runtime state (contains AgentCore Memory ID, gitignored per-participant)
+kata-11-agentcore-memory/kata11_state.json
+
 # DOCS folder — track the folder itself but not its contents (PDFs may be proprietary)
 DOCS/*
 !DOCS/.gitkeep
