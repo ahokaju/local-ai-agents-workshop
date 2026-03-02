@@ -9,10 +9,12 @@ This workshop teaches you to build AI agents locally using:
 - **Atlassian Integration** (Jira/Confluence)
 - **GitHub Integration** (PR workflows with PyGithub)
 - **MCP Protocol** for standardized tool integration
+- **AWS AgentCore** (Runtime, Memory, Code Interpreter, Gateway)
+- **Bedrock Knowledge Bases** with S3 Vectors
 
-**Duration**: ~4.5-5 hours
-**Level**: Beginner to Intermediate
-**Format**: 8 hands-on katas with progressive difficulty
+**Duration**: ~7-9 hours (all katas) or pick the track you need
+**Level**: Beginner to Advanced
+**Format**: 13 hands-on katas with progressive difficulty
 
 ---
 
@@ -39,6 +41,7 @@ This session complements the main AWS Bedrock workshop by:
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                     LOCAL AI AGENTS WORKSHOP                             │
 ├─────────────────────────────────────────────────────────────────────────┤
+│  Track 1: Anthropic + Strands (no AWS required)                         │
 │                                                                          │
 │  Kata 01          Kata 02          Kata 03                              │
 │  ┌──────────┐    ┌──────────┐    ┌──────────┐                          │
@@ -56,21 +59,34 @@ This session complements the main AWS Bedrock workshop by:
 │     ⭐⭐            ⭐⭐⭐                                                 │
 │    40 min          45 min                                               │
 │                                                                          │
-│  Kata 06          Kata 07                                               │
+│  Kata 06          Kata 07          Kata 08                             │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐                          │
+│  │Atlassian │───▶│Atlassian │    │ GitHub   │                          │
+│  │  Agent   │    │   MCP    │    │ PR Agent │                          │
+│  └──────────┘    └──────────┘    └──────────┘                          │
+│     ⭐⭐            ⭐⭐⭐            ⭐⭐                                  │
+│    40 min          45 min         35 min                                │
+│                                                                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│  Track 2: AWS Bedrock + AgentCore (AWS credentials required)            │
+│                                                                          │
+│  Kata 09          Kata 10          Kata 11                             │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐                          │
+│  │ Bedrock  │───▶│AgentCore │───▶│AgentCore │                          │
+│  │Knowledge │    │ Runtime  │    │  Memory  │                          │
+│  │   Base   │    │          │    │          │                          │
+│  └──────────┘    └──────────┘    └──────────┘                          │
+│     ⭐⭐⭐           ⭐⭐             ⭐⭐⭐                                 │
+│    45-60 min       20 min         30-40 min                             │
+│                                                                          │
+│  Kata 12          Kata 13                                               │
 │  ┌──────────┐    ┌──────────┐                                          │
-│  │Atlassian │───▶│Atlassian │                                          │
-│  │  Agent   │    │   MCP    │                                          │
+│  │AgentCore │───▶│AgentCore │                                          │
+│  │  Code    │    │ Gateway  │                                          │
+│  │Interpret.│    │ (MCP)    │                                          │
 │  └──────────┘    └──────────┘                                          │
 │     ⭐⭐            ⭐⭐⭐                                                 │
-│    40 min          45 min                                               │
-│                                                                          │
-│  Kata 08                                                                │
-│  ┌──────────┐                                                          │
-│  │ GitHub   │                                                          │
-│  │ PR Agent │                                                          │
-│  └──────────┘                                                          │
-│     ⭐⭐                                                                 │
-│    35 min                                                               │
+│    20-30 min       25-35 min                                            │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -97,6 +113,11 @@ This session complements the main AWS Bedrock workshop by:
 ### For GitHub Kata (08)
 - GitHub account
 - GitHub Personal Access Token with `repo` scope ([create here](https://github.com/settings/tokens))
+
+### For AWS AgentCore Katas (09–13)
+- AWS account with Bedrock and AgentCore enabled
+- `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` environment variables set
+- Katas 09–13 run **only** the `solution.py` / `starter.py` variants (Bedrock-native)
 
 ---
 
@@ -193,6 +214,8 @@ See [`docker/DOCKER.md`](docker/DOCKER.md) for full Docker instructions includin
 
 ## Kata Summary
 
+### Track 1 — Anthropic + Strands (no AWS required)
+
 | Kata | Topic | Skills | Time | Difficulty |
 |------|-------|--------|------|------------|
 | 01 | Anthropic API Basics | Messages API, streaming, tokens | 20-25 min | ⭐ |
@@ -204,6 +227,16 @@ See [`docker/DOCKER.md`](docker/DOCKER.md) for full Docker instructions includin
 | 07 | Atlassian MCP | MCP protocol, standardized tools | 40-50 min | ⭐⭐⭐ |
 | 08 | GitHub PR Agent | GitHub API, PR workflows, PyGithub | 30-40 min | ⭐⭐ |
 
+### Track 2 — AWS Bedrock + AgentCore (AWS credentials required)
+
+| Kata | Topic | Skills | Time | Difficulty |
+|------|-------|--------|------|------------|
+| 09 | Bedrock Knowledge Base | S3 Vectors, KB ingestion, RAG agent | 45-60 min | ⭐⭐⭐ |
+| 10 | AgentCore Runtime | BedrockAgentCoreApp, HTTP server, health checks | 20-30 min | ⭐⭐ |
+| 11 | AgentCore Memory | Persistent memory, SemanticStrategy, cross-session recall | 30-40 min | ⭐⭐⭐ |
+| 12 | AgentCore Code Interpreter | Sandboxed code execution, autonomous coding agent | 20-30 min | ⭐⭐ |
+| 13 | AgentCore Gateway | REST→MCP auto-generation, OpenAPI schema, credential injection | 25-35 min | ⭐⭐⭐ |
+
 ---
 
 ## Folder Structure
@@ -213,6 +246,8 @@ local-ai-agents-workshop/
 ├── README.md               # This file
 ├── SETUP.md               # Detailed setup instructions
 ├── requirements.txt       # Python dependencies
+│
+│  Track 1 — Anthropic + Strands
 │
 ├── kata-01-anthropic-basics/
 │   ├── README.md          # Kata instructions
@@ -252,12 +287,44 @@ local-ai-agents-workshop/
 │   ├── starter.py
 │   └── solution.py
 │
-└── kata-08-github-pr-agent/
+├── kata-08-github-pr-agent/
+│   ├── README.md
+│   ├── github_tools.py      # Reusable GitHub tools module
+│   ├── starter.py
+│   ├── solution.py
+│   └── test_github_tools.py # Unit tests
+│
+│  Track 2 — AWS Bedrock + AgentCore
+│
+├── kata-09-bedrock-knowledge-base/
+│   ├── README.md
+│   ├── starter.py
+│   ├── solution.py
+│   ├── chat.py              # Interactive chat with the KB agent
+│   ├── cleanup.py           # Deletes AWS resources (reads kata09_state.json)
+│   └── sample_data/
+│
+├── kata-10-agentcore-runtime/
+│   ├── README.md
+│   ├── starter.py
+│   └── solution.py
+│
+├── kata-11-agentcore-memory/
+│   ├── README.md
+│   ├── starter.py
+│   ├── solution.py
+│   └── cleanup.py           # Deletes AgentCore Memory store
+│
+├── kata-12-agentcore-code-interpreter/
+│   ├── README.md
+│   ├── starter.py
+│   └── solution.py
+│
+└── kata-13-agentcore-gateway/
     ├── README.md
-    ├── github_tools.py      # Reusable GitHub tools module
     ├── starter.py
     ├── solution.py
-    └── test_github_tools.py # Unit tests
+    └── cleanup.py           # Deletes Gateway, IAM role, and Secrets Manager secret
 ```
 
 ---
