@@ -77,6 +77,9 @@ kata-09-bedrock-knowledge-base/kata09_state.json
 # Kata 11 runtime state (contains AgentCore Memory ID, gitignored per-participant)
 kata-11-agentcore-memory/kata11_state.json
 
+# Kata 13 runtime state (contains AgentCore Gateway ID, gitignored per-participant)
+kata-13-agentcore-gateway/kata13_state.json
+
 # DOCS folder — track the folder itself but not its contents (PDFs may be proprietary)
 DOCS/*
 !DOCS/.gitkeep
