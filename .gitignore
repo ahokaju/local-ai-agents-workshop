@@ -71,6 +71,13 @@ chroma_db/
 storage/
 ./storage/
 
+# Kata 09 runtime state (contains AWS resource IDs, gitignored per-participant)
+kata-09-bedrock-knowledge-base/kata09_state.json
+
+# DOCS folder — track the folder itself but not its contents (PDFs may be proprietary)
+DOCS/*
+!DOCS/.gitkeep
+
 # Browser automation screenshots (auto-generated)
 kata-03b-browser-tools/screenshots/
 
