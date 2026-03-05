@@ -14,7 +14,7 @@ This workshop teaches you to build AI agents locally using:
 
 **Duration**: ~7-9 hours (all katas) or pick the track you need
 **Level**: Beginner to Advanced
-**Format**: 13 hands-on katas with progressive difficulty
+**Format**: 15 hands-on katas with progressive difficulty
 
 ---
 
@@ -88,6 +88,17 @@ This session complements the main AWS Bedrock workshop by:
 │     ⭐⭐            ⭐⭐⭐                                                 │
 │    20-30 min       25-35 min                                            │
 │                                                                          │
+│  Track 3: AWS Preview Services (DevOps Agent + Security Agent access)   │
+│                                                                          │
+│  Kata 14          Kata 15                                               │
+│  ┌──────────┐    ┌──────────┐                                          │
+│  │  DevOps  │    │Security  │                                          │
+│  │  Agent   │    │  Agent   │                                          │
+│  │MCP Server│    │Findings  │                                          │
+│  └──────────┘    └──────────┘                                          │
+│     ⭐⭐⭐           ⭐⭐                                                  │
+│    35-45 min       25-35 min                                            │
+│                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -118,6 +129,12 @@ This session complements the main AWS Bedrock workshop by:
 - AWS account with Bedrock and AgentCore enabled
 - `AWS_BEARER_TOKEN_BEDROCK` and `AWS_REGION` environment variables set
 - Katas 09–13 run **only** the `solution.py` / `starter.py` variants (Bedrock-native)
+
+### For AWS Preview Katas (14–15)
+- AWS account with **DevOps Agent** and/or **Security Agent** preview access
+- Request access at [aws.amazon.com/devops-agent](https://aws.amazon.com/devops-agent) and [aws.amazon.com/security-agent](https://aws.amazon.com/security-agent)
+- Kata 14 (DevOps Agent): `us-east-1` only; requires downloading the custom service model JSON
+- Kata 15 (Security Agent): requires a GitHub repo connected to Security Agent with at least one reviewed PR; uses PyGithub to fetch findings (no boto3 — Security Agent has no public API in preview)
 
 ---
 
