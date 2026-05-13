@@ -1,5 +1,5 @@
 """
-Kata 14: AWS DevOps Agent — Custom MCP Integration - Solution
+Kata 15: AWS DevOps Agent — Custom MCP Integration - Solution
 
 This script demonstrates the boto3 DevOps Agent API:
   - List AgentSpaces and their associations
@@ -95,7 +95,7 @@ def list_agent_spaces(client) -> list[dict]:
     if not spaces:
         print(Colors.stats("  No AgentSpaces found."))
         print(Colors.stats("  Create one in the console or with:"))
-        print(Colors.stats(f'    aws devopsagent create-agent-space --name "kata-14-agent-space" \\'))
+        print(Colors.stats(f'    aws devopsagent create-agent-space --name "kata-15-agent-space" \\'))
         print(Colors.stats(f'      --endpoint-url "{DEVOPS_AGENT_ENDPOINT}" --region {AWS_REGION}'))
         return []
 
@@ -155,13 +155,13 @@ def register_mcp_server(client, endpoint_url: str, api_key: str) -> str | None:
         service="mcpserver",
         serviceDetails={
             "mcpserver": {
-                "name": "kata14-ops-tools",
+                "name": "kata15-ops-tools",
                 "endpoint": endpoint_url,
                 "description": "Internal ops tools: deployments, runbooks, on-call",
                 "authorizationConfig": {
                     "apiKey": {
                         "apiKeyHeader": "X-Api-Key",
-                        "apiKeyName": "kata14-mcp-key",
+                        "apiKeyName": "kata15-mcp-key",
                         "apiKeyValue": api_key
                     }
                 }
@@ -176,7 +176,7 @@ def register_mcp_server(client, endpoint_url: str, api_key: str) -> str | None:
         print(Colors.stats(f'    aws devopsagent associate-service \\'))
         print(Colors.stats(f'      --agent-space-id {AGENT_SPACE_ID} \\'))
         print(Colors.stats(f'      --service-id {service_id} \\'))
-        print(Colors.stats(f'      --configuration \'{{"mcpserver": {{"name": "kata14-ops-tools", "endpoint": "{endpoint_url}"}}}}\'\\'))
+        print(Colors.stats(f'      --configuration \'{{"mcpserver": {{"name": "kata15-ops-tools", "endpoint": "{endpoint_url}"}}}}\'\\'))
         print(Colors.stats(f'      --endpoint-url "{DEVOPS_AGENT_ENDPOINT}" --region {AWS_REGION}'))
     return service_id
 
@@ -197,7 +197,7 @@ def trigger_test_incident(webhook_id: str, webhook_secret: str) -> None:
 
     payload = {
         "eventType": "incident",
-        "incidentId": "kata14-test-001",
+        "incidentId": "kata15-test-001",
         "action": "created",
         "priority": "HIGH",
         "title": "High latency on payment-api",
@@ -247,7 +247,7 @@ def trigger_test_incident(webhook_id: str, webhook_secret: str) -> None:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 14: AWS DevOps Agent - Solution"))
+    print(Colors.header(" Kata 15: AWS DevOps Agent - Solution"))
     print(Colors.header(f" Region: {AWS_REGION}"))
     print(Colors.header(f" Endpoint: {DEVOPS_AGENT_ENDPOINT}"))
     print(Colors.header("=" * 70))
@@ -313,7 +313,7 @@ def main():
             print(f"\nAWS error: {e}")
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 14 Complete!"))
+    print(Colors.header(" Kata 15 Complete!"))
     print(Colors.header("=" * 70))
     print(Colors.stats("\nKey takeaway: DevOps Agent calls your MCP tools (not the other way around."))
     print(Colors.stats("The Streamable HTTP transport is what makes this interoperability possible."))

@@ -1,5 +1,5 @@
 """
-Kata 08: Strands GitHub PR Agent - Bedrock Starter Template
+Kata 07: Strands GitHub PR Agent - Bedrock Starter Template
 
 Complete the TODO to build a GitHub PR agent backed by AWS Bedrock instead of
 the Anthropic API directly.  All GitHub tools are imported from github_tools.py
@@ -69,7 +69,7 @@ def create_github_pr_agent(
 def main():
     """Run a demo of the GitHub PR agent."""
     print("=" * 60)
-    print(" Kata 08: GitHub PR Agent - Bedrock Starter")
+    print(" Kata 07: GitHub PR Agent - Bedrock Starter")
     print(f" Region: {AWS_REGION}")
     print("=" * 60)
 

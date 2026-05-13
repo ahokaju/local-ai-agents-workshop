@@ -1,5 +1,5 @@
 """
-Kata 07: Atlassian MCP Server - Solution
+Kata 08: Atlassian MCP Server - Solution
 
 This script demonstrates using MCP (Model Context Protocol) with Atlassian
 services via our simple HTTP MCP server.
@@ -189,7 +189,7 @@ def print_comparison():
     print("=" * 70)
 
     print("""
-    | Aspect          | Direct API (Kata 06)      | MCP Server (Kata 07)     |
+    | Aspect          | Direct API (Kata 06)      | MCP Server (Kata 08)     |
     |-----------------|---------------------------|--------------------------|
     | Setup           | Write tools yourself      | Use pre-built server     |
     | Maintenance     | You maintain code         | Server provider maintains|
@@ -217,7 +217,7 @@ def print_comparison():
 def main():
     """Run the MCP demo."""
     print("=" * 70)
-    print(" Kata 07: Atlassian MCP Server - Solution")
+    print(" Kata 08: Atlassian MCP Server - Solution")
     print("=" * 70)
 
     # Create MCP client
@@ -251,7 +251,7 @@ def main():
     print_comparison()
 
     print("\n" + "=" * 70)
-    print(" Kata 07 Complete!")
+    print(" Kata 08 Complete!")
     print("=" * 70)
     print("\nKey Takeaways:")
     print("- MCP provides a standardized protocol for tool access")

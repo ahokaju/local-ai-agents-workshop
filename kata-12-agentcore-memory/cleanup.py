@@ -1,12 +1,12 @@
 """
-Kata 11: Cleanup Script
+Kata 12: Cleanup Script
 
 Deletes the AgentCore Memory store created by solution.py / starter.py by reading
-the memory ID from kata11_state.json. Safe to run in a shared AWS account — only
+the memory ID from kata12_state.json. Safe to run in a shared AWS account — only
 the memory from *your* run is deleted.
 
 Resources removed:
-  - AgentCore Memory store (identified by memory_id in kata11_state.json)
+  - AgentCore Memory store (identified by memory_id in kata12_state.json)
 
 Run after you have finished the kata:
     python cleanup.py
@@ -22,7 +22,7 @@ from bedrock_agentcore_starter_toolkit.operations.memory.manager import MemoryMa
 
 load_dotenv()
 
-STATE_FILE = os.path.join(os.path.dirname(__file__), "kata11_state.json")
+STATE_FILE = os.path.join(os.path.dirname(__file__), "kata12_state.json")
 
 
 # ANSI colors
@@ -89,7 +89,7 @@ def cleanup_memory(state: dict) -> None:
 
 def main():
     print(Colors.header("=" * 60))
-    print(Colors.header(" Kata 11: AWS Resource Cleanup"))
+    print(Colors.header(" Kata 12: AWS Resource Cleanup"))
     print(Colors.header("=" * 60))
 
     try:
@@ -97,7 +97,7 @@ def main():
     except SystemExit:
         raise
 
-    print(Colors.header("\nResources to delete (from kata11_state.json):"))
+    print(Colors.header("\nResources to delete (from kata12_state.json):"))
     for key, val in state.items():
         print(f"  {key}: {val}")
     print()

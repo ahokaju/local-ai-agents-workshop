@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Kata 14: Custom MCP Server for AWS DevOps Agent
+Kata 15: Custom MCP Server for AWS DevOps Agent
 
 This MCP server exposes internal operations tools that AWS DevOps Agent calls
 when investigating incidents. DevOps Agent discovers your tools via the MCP
@@ -9,11 +9,11 @@ protocol and invokes them during incident investigations.
 IMPORTANT — Transport protocol:
     AWS DevOps Agent requires the Streamable HTTP MCP transport protocol.
     This server uses FastMCP (from the `mcp` package) which implements the
-    correct protocol. Do NOT use a plain REST server (like kata-07's HTTP server)
+    correct protocol. Do NOT use a plain REST server (like kata-08's HTTP server)
     — DevOps Agent will not be able to communicate with it.
 
 Usage:
-    export MCP_API_KEY=kata14-dev-key
+    export MCP_API_KEY=kata15-dev-key
     python mcp_server.py
     # Server starts on http://localhost:8001/mcp
 
@@ -30,8 +30,8 @@ Registration fields (used when registering this server with DevOps Agent):
     - Endpoint URL: https://your-ngrok-url.ngrok.io/mcp   (Streamable HTTP)
     - Auth type: API Key
     - API Key Header: X-Api-Key
-    - API Key Name: kata14-mcp-key
-    - API Key Value: kata14-dev-key   (must match MCP_API_KEY env var)
+    - API Key Name: kata15-mcp-key
+    - API Key Value: kata15-dev-key   (must match MCP_API_KEY env var)
 """
 
 import json
@@ -44,7 +44,7 @@ from mcp.server.fastmcp import FastMCP
 load_dotenv()
 
 MCP_PORT = int(os.getenv("MCP_PORT", 8001))
-MCP_API_KEY = os.getenv("MCP_API_KEY", "kata14-dev-key")
+MCP_API_KEY = os.getenv("MCP_API_KEY", "kata15-dev-key")
 
 # ==============================================================================
 # FastMCP server — uses Streamable HTTP transport (required by DevOps Agent)
@@ -248,7 +248,7 @@ def get_team_oncall(service: str) -> str:
 
 def main() -> None:
     print("=" * 60)
-    print(" Kata 14: DevOps Agent MCP Server")
+    print(" Kata 15: DevOps Agent MCP Server")
     print("=" * 60)
     print("\nTransport: Streamable HTTP (required by AWS DevOps Agent)")
     print(f"Tools: get_deployment_history, query_runbook, get_team_oncall")

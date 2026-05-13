@@ -1,4 +1,4 @@
-# Kata 07: Atlassian MCP Server
+# Kata 08: Atlassian MCP Server
 
 ## Objective
 
@@ -56,9 +56,9 @@ Model Context Protocol (MCP) is a standard protocol for connecting AI models to 
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Kata 06 vs Kata 07
+### Kata 06 vs Kata 08
 
-| Aspect | Kata 06 (Direct API) | Kata 07 (MCP Server) |
+| Aspect | Kata 06 (Direct API) | Kata 08 (MCP Server) |
 |--------|---------------------|----------------------|
 | Tools | Write yourself | Pre-built on server |
 | Discovery | Manual | Automatic via `/mcp/v1/tools` |
@@ -74,7 +74,7 @@ Model Context Protocol (MCP) is a standard protocol for connecting AI models to 
 Open a terminal and run:
 
 ```bash
-cd kata-07-atlassian-mcp
+cd kata-08-atlassian-mcp
 python mcp_server.py
 ```
 
@@ -245,7 +245,7 @@ Compare your implementation with `solution.py`.
 
 ```
 ======================================================================
- Kata 07: Atlassian MCP Server - Solution
+ Kata 08: Atlassian MCP Server - Solution
 ======================================================================
 
 1. Connecting to MCP server at http://localhost:8000...
@@ -284,7 +284,7 @@ Compare your implementation with `solution.py`.
 
 ## MCP vs Direct API Comparison
 
-| Aspect | Direct API (Kata 06) | MCP Server (Kata 07) |
+| Aspect | Direct API (Kata 06) | MCP Server (Kata 08) |
 |--------|---------------------|----------------------|
 | Setup | Write tools yourself | Use pre-built server |
 | Maintenance | You maintain code | Server provider maintains |

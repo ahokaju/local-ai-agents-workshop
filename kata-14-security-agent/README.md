@@ -1,4 +1,4 @@
-# Kata 15: AWS Security Agent — PR Findings Analyzer
+# Kata 14: AWS Security Agent — PR Findings Analyzer
 
 > **Preview service**: AWS Security Agent is currently in Preview in **us-east-1 only**.
 > Request access at [aws.amazon.com/security-agent](https://aws.amazon.com/security-agent).
@@ -6,12 +6,12 @@
 > **No public API**: Unlike most AWS services, Security Agent has no boto3 client or
 > AWS CLI at this time. Findings are consumed through the web application or via the
 > GitHub PR comments that Security Agent posts automatically. This kata uses the GitHub
-> integration — building on kata-08 — to retrieve and analyze those findings.
+> integration — building on kata-07 — to retrieve and analyze those findings.
 
 ## Objective
 
 AWS Security Agent posts security findings directly to GitHub pull requests as review
-comments. This kata uses PyGithub (from kata-08) to fetch those comments, then passes
+comments. This kata uses PyGithub (from kata-07) to fetch those comments, then passes
 them to a Strands agent that generates a prioritized remediation report with explanations
 and concrete code fixes.
 
@@ -21,11 +21,11 @@ and concrete code fixes.
 - Configure the GitHub integration so Security Agent reviews pull requests automatically
 - Use PyGithub to retrieve Security Agent findings from PR review comments
 - Build a Strands agent that analyzes security findings and generates actionable remediation guidance
-- See how multiple katas compose: kata-08 (GitHub) + Strands agent = security workflow
+- See how multiple katas compose: kata-07 (GitHub) + Strands agent = security workflow
 
 ## Prerequisites
 
-- Completed Kata 03 (custom tools) and Kata 08 (GitHub integration)
+- Completed Kata 03 (custom tools) and Kata 07 (GitHub integration)
 - AWS account with Security Agent Preview access (us-east-1)
 - GitHub account with a repository connected to Security Agent
 - GitHub Personal Access Token with `repo` scope
@@ -45,7 +45,7 @@ export PR_NUMBER=42                        # PR that Security Agent reviewed
 
 ## Difficulty
 
-⭐⭐ (Intermediate — familiar Strands @tool pattern, builds on kata-08)
+⭐⭐ (Intermediate — familiar Strands @tool pattern, builds on kata-07)
 
 ---
 
@@ -98,7 +98,7 @@ Output: Prioritized Markdown remediation report
 
 1. Sign in to the [AWS Console](https://us-east-1.console.aws.amazon.com/securityagent/)
 2. Click **Get started** and follow the activation wizard
-3. Create an **Agent Space** (name it after your application, e.g., `kata-15-app`)
+3. Create an **Agent Space** (name it after your application, e.g., `kata-14-app`)
 
 ### Step 2: Connect GitHub
 
@@ -135,7 +135,7 @@ The agent uses these to retrieve findings and generate a structured remediation 
 ### Running the Solution
 
 ```bash
-cd kata-15-security-agent
+cd kata-14-security-agent
 export GITHUB_TOKEN=your-pat
 export GITHUB_REPO=owner/repo
 export PR_NUMBER=42
@@ -145,7 +145,7 @@ python solution.py
 Expected output:
 ```
 ===========================================================
- Kata 15: AWS Security Agent - PR Findings Analyzer
+ Kata 14: AWS Security Agent - PR Findings Analyzer
  Region: us-east-1
 ===========================================================
 
@@ -196,7 +196,7 @@ cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
 - [ ] `get_pr_security_findings` returns at least one Security Agent comment
 - [ ] Agent generates a report organized by severity
 - [ ] Each finding includes: what it is, why it's dangerous, how to fix it
-- [ ] (Bonus) Post the remediation report back to the PR as a comment (kata-08 pattern)
+- [ ] (Bonus) Post the remediation report back to the PR as a comment (kata-07 pattern)
 
 ---
 
@@ -356,7 +356,7 @@ print(response)
 
 ## Extension Challenges
 
-1. **Post report as PR comment**: Use kata-08's `github_create_pr_comment` pattern to
+1. **Post report as PR comment**: Use kata-07's `github_create_pr_comment` pattern to
    post the remediation report directly on the PR so developers see it immediately
 2. **Severity filter**: Only report on findings that include specific OWASP categories
    (e.g., only injection-type vulnerabilities)

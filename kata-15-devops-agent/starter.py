@@ -1,5 +1,5 @@
 """
-Kata 14: AWS DevOps Agent — Custom MCP Integration - Starter Template
+Kata 15: AWS DevOps Agent — Custom MCP Integration - Starter Template
 
 Complete the TODOs to:
   1. Add the MCP tools to mcp_server.py (open that file and complete the @mcp.tool() functions)
@@ -163,7 +163,7 @@ def trigger_test_incident(webhook_id: str, webhook_secret: str) -> None:
         1. Build the webhook URL:
                f"https://event-ai.us-east-1.api.aws/webhook/generic/{webhook_id}"
         2. Create a payload dict with:
-               eventType="incident", incidentId="kata14-test-001",
+               eventType="incident", incidentId="kata15-test-001",
                action="created", priority="HIGH",
                title="High latency on payment-api",
                description="P99 latency exceeded 5s for 10+ minutes.",
@@ -181,7 +181,7 @@ def trigger_test_incident(webhook_id: str, webhook_secret: str) -> None:
     # webhook_url = f"https://event-ai.us-east-1.api.aws/webhook/generic/{webhook_id}"
     # payload = {
     #     "eventType": "incident",
-    #     "incidentId": "kata14-test-001",
+    #     "incidentId": "kata15-test-001",
     #     "action": "created",
     #     "priority": "HIGH",
     #     "title": "High latency on payment-api",
@@ -209,7 +209,7 @@ def trigger_test_incident(webhook_id: str, webhook_secret: str) -> None:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 14: AWS DevOps Agent"))
+    print(Colors.header(" Kata 15: AWS DevOps Agent"))
     print(Colors.header(f" Region: {AWS_REGION}"))
     print(Colors.header("=" * 70))
 
@@ -269,7 +269,7 @@ def main():
             print(f"\nAWS error: {e}")
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 14 Complete!"))
+    print(Colors.header(" Kata 15 Complete!"))
     print(Colors.header("=" * 70))
 
 

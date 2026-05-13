@@ -1,5 +1,5 @@
 """
-Kata 11: AgentCore Memory - Solution
+Kata 12: AgentCore Memory - Solution
 
 Give agents persistent long-term memory using AgentCore Memory.
 Short-term memory holds recent turns; long-term memory extracts and indexes
@@ -27,10 +27,10 @@ from bedrock_agentcore.memory.constants import ConversationalMessage, MessageRol
 load_dotenv()
 
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
-MEMORY_NAME = "kata11_workshop_memory"
-MEMORY_DESCRIPTION = "Demo long-term memory for kata-11 workshop"
+MEMORY_NAME = "kata12_workshop_memory"
+MEMORY_DESCRIPTION = "Demo long-term memory for kata-12 workshop"
 ACTOR_ID = "alice"
-STATE_FILE = os.path.join(os.path.dirname(__file__), "kata11_state.json")
+STATE_FILE = os.path.join(os.path.dirname(__file__), "kata12_state.json")
 
 
 # ANSI color codes for terminal output
@@ -180,7 +180,7 @@ def run_session_two(memory_id: str) -> None:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 11: AgentCore Memory - Solution"))
+    print(Colors.header(" Kata 12: AgentCore Memory - Solution"))
     print(Colors.header(f" Region: {AWS_REGION}"))
     print(Colors.header("=" * 70))
 
@@ -216,7 +216,7 @@ def main():
         raise
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 11 Complete!"))
+    print(Colors.header(" Kata 12 Complete!"))
     print(Colors.header("=" * 70))
     print(Colors.stats("\nTip: Run the script again — session-002 will find richer memories"))
     print(Colors.stats("     because the extraction from session-001 has had more time."))

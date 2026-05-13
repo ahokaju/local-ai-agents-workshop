@@ -1,4 +1,4 @@
-# Kata 08: Strands GitHub PR Agent
+# Kata 07: Strands GitHub PR Agent
 
 Build a Strands agent that can create and manage GitHub pull requests for OSS Risk Mitigation workflows.
 

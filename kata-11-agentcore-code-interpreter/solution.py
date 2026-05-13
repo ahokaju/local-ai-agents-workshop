@@ -1,5 +1,5 @@
 """
-Kata 12: AgentCore Code Interpreter - Solution
+Kata 11: AgentCore Code Interpreter - Solution
 
 Add AgentCore's sandboxed Code Interpreter as a tool to a Strands agent.
 The agent writes and executes Python code in a secure AWS microVM — no unsafe
@@ -81,7 +81,7 @@ def build_agent() -> Agent:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 12: AgentCore Code Interpreter - Solution"))
+    print(Colors.header(" Kata 11: AgentCore Code Interpreter - Solution"))
     print(Colors.header(f" Region: {AWS_REGION}  |  Model: {DEFAULT_MODEL}"))
     print(Colors.header("=" * 70))
     print(Colors.stats("\nCode runs in an isolated AWS sandbox — no local execution.\n"))
@@ -141,7 +141,7 @@ def main():
         print("Set AWS_BEARER_TOKEN_BEDROCK and AWS_REGION environment variables.")
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 12 Complete!"))
+    print(Colors.header(" Kata 11 Complete!"))
     print(Colors.header("=" * 70))
     print(Colors.stats("\nKey insight: The agent wrote and ran real Python code in a sandboxed"))
     print(Colors.stats("AWS microVM. Compare with kata-03's local @tool approach."))

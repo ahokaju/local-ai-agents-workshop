@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Kata 07: Simple HTTP-based MCP Server for Atlassian (Jira + Confluence)
+Kata 08: Simple HTTP-based MCP Server for Atlassian (Jira + Confluence)
 
 This is a lightweight MCP server that exposes Jira and Confluence operations
 via HTTP endpoints. It's designed for learning and demos, not production use.

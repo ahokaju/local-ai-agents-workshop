@@ -1,5 +1,5 @@
 """
-Kata 15: AWS Security Agent — PR Findings Analyzer - Solution
+Kata 14: AWS Security Agent — PR Findings Analyzer - Solution
 
 AWS Security Agent posts code review findings as GitHub PR review comments.
 This script uses PyGithub to retrieve those findings and a Strands agent to
@@ -268,7 +268,7 @@ def run_remediation_agent(repo: str, pr_number: int) -> None:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 15: AWS Security Agent - PR Findings Analyzer"))
+    print(Colors.header(" Kata 14: AWS Security Agent - PR Findings Analyzer"))
     print(Colors.header(f" Region: {AWS_REGION}  |  Model: {DEFAULT_MODEL}"))
     print(Colors.header("=" * 70))
 
@@ -299,7 +299,7 @@ def main():
     run_remediation_agent(GITHUB_REPO, PR_NUMBER)
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 15 Complete!"))
+    print(Colors.header(" Kata 14 Complete!"))
     print(Colors.header("=" * 70))
     print(Colors.stats("\nKey takeaway: Security Agent has no public boto3 API (preview)."))
     print(Colors.stats("Its findings ARE accessible via GitHub PR comments, giving you"))

@@ -70,18 +70,18 @@ docker exec -it workshop bash
 The full image has the HuggingFace embedding model pre-downloaded, so kata-04/05
 work without any first-run download delay.
 
-## Kata-07: MCP Server (two terminals needed)
+## Kata-08: MCP Server (two terminals needed)
 
-Kata-07 runs a local MCP server alongside the agent. Open two terminal windows:
+Kata-08 runs a local MCP server alongside the agent. Open two terminal windows:
 
 ```bash
 # Terminal 1 — start the MCP server inside the container
 docker exec -it workshop bash
-python kata-07-atlassian-mcp/mcp_server.py
+python kata-08-atlassian-mcp/mcp_server.py
 
 # Terminal 2 — run the agent
 docker exec -it workshop bash
-python kata-07-atlassian-mcp/solution.py
+python kata-08-atlassian-mcp/solution.py
 ```
 
 Port 8000 is already mapped to your host (`localhost:8000`).

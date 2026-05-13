@@ -1,17 +1,25 @@
 """
-Kata 08: Strands GitHub PR Agent - Solution
+Kata 07: Strands GitHub PR Agent - Bedrock Solution
 
-This script demonstrates how to create a GitHub PR agent using Strands,
-designed for integration with OSS Risk Mitigation workflows.
+This script mirrors solution.py but uses AWS Bedrock as the inference provider
+instead of the Anthropic API directly.
 
 Prerequisites:
-    pip install 'strands-agents[anthropic]' PyGithub python-dotenv
-    export ANTHROPIC_API_KEY="your-key-here"
-    export GITHUB_TOKEN="your-github-token"
+    pip install 'strands-agents[bedrock]' PyGithub boto3 python-dotenv
+
+    Set these environment variables before running:
+        AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+        AWS_REGION=us-east-1   (must match the region your key was created in)
+        GITHUB_TOKEN=your-github-token
+
+    boto3 picks up AWS_BEARER_TOKEN_BEDROCK and AWS_REGION automatically.
+
+    To use eu-central-1: set AWS_REGION=eu-central-1 and change the model ID
+    prefix from "us." to "eu." (e.g. "eu.anthropic.claude-sonnet-4-5-20250929-v1:0").
 
 Usage:
-    python solution.py              # Run interactive demo
-    python solution.py --mock       # Run with mock tools (no GitHub API)
+    python solution_bedrock.py              # Run interactive demo
+    python solution_bedrock.py --mock       # Run with mock tools (no GitHub API)
 """
 
 import os
@@ -19,10 +27,9 @@ import sys
 from datetime import datetime
 from dotenv import load_dotenv
 from strands import Agent, tool
-from strands.models.anthropic import AnthropicModel
+from strands.models.bedrock import BedrockModel
 
 from github_tools import (
-    create_github_pr_agent,
     github_create_branch,
     github_commit_file,
     github_create_pr,
@@ -32,6 +39,9 @@ from github_tools import (
 )
 
 load_dotenv()
+
+AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
+DEFAULT_MODEL = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
 
 
 # ANSI color codes for terminal output
@@ -221,12 +231,13 @@ def mock_github_get_file(
 
 
 def create_mock_agent(
-    model_id: str = "claude-haiku-4-5-20251001",
+    model_id: str = DEFAULT_MODEL,
     max_tokens: int = 2048
 ) -> Agent:
     """Create a mock GitHub PR agent for testing without API calls."""
-    model = AnthropicModel(
+    model = BedrockModel(
         model_id=model_id,
+        region_name=AWS_REGION,
         max_tokens=max_tokens
     )
 
@@ -260,6 +271,49 @@ When creating PRs for RMP updates:
     return agent
 
 
+def create_github_pr_agent_bedrock(
+    model_id: str = DEFAULT_MODEL,
+    max_tokens: int = 2048
+) -> Agent:
+    """Create a real GitHub PR agent backed by AWS Bedrock."""
+    model = BedrockModel(
+        model_id=model_id,
+        region_name=AWS_REGION,
+        max_tokens=max_tokens
+    )
+
+    agent = Agent(
+        model=model,
+        tools=[
+            github_create_branch,
+            github_commit_file,
+            github_create_pr,
+            github_list_prs,
+            github_get_pr,
+            github_get_file,
+        ],
+        system_prompt="""You are a GitHub PR assistant specializing in OSS Risk Mitigation.
+
+Your responsibilities:
+1. Create branches for Risk Mitigation Plan (RMP) updates
+2. Commit updated RMP files to branches
+3. Create pull requests with clear descriptions of changes
+4. Check for existing PRs to avoid duplicates
+5. Provide summaries of PR status
+
+When creating PRs for RMP updates:
+- Use descriptive branch names like 'rmp/update-<component>-<date>'
+- Include a clear summary of risk findings in the PR body
+- List the affected components and their risk levels
+- Reference any related SBOM data when available
+
+Always verify operations completed successfully before proceeding to the next step.
+When errors occur, explain them clearly and suggest fixes."""
+    )
+
+    return agent
+
+
 # ==============================================================================
 # Demo Scenarios
 # ==============================================================================
@@ -270,7 +324,6 @@ def demo_oss_risk_mitigation_workflow(agent: Agent, repo: str):
     print(Colors.header(" OSS Risk Mitigation Workflow Demo"))
     print(Colors.header("=" * 70))
 
-    # Simulate an RMP update scenario
     rmp_content = """# OSS Risk Mitigation Plan
 
 ## Component: log4j
@@ -367,10 +420,10 @@ def demo_interactive(agent: Agent):
 def main():
     """Run the GitHub PR Agent demo."""
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 08: Strands GitHub PR Agent"))
+    print(Colors.header(" Kata 07: Strands GitHub PR Agent - Bedrock Solution"))
+    print(Colors.header(f" Region: {AWS_REGION}"))
     print(Colors.header("=" * 70))
 
-    # Check for mock mode
     use_mock = "--mock" in sys.argv or not os.getenv("GITHUB_TOKEN")
 
     if use_mock:
@@ -380,22 +433,19 @@ def main():
     else:
         print(Colors.prompt("\nRunning with real GitHub API"))
         print("GITHUB_TOKEN is configured.\n")
-        agent = create_github_pr_agent()
+        agent = create_github_pr_agent_bedrock()
 
-    # Demo repository (use a test repo for real mode)
     demo_repo = "acme-corp/oss-policies"
 
-    # Run workflow demo
     demo_oss_risk_mitigation_workflow(agent, demo_repo)
 
-    # Offer interactive mode
     print(Colors.header("\n" + "=" * 70))
     response = input("\nWould you like to enter interactive mode? (y/n): ").strip().lower()
     if response in ('y', 'yes'):
         demo_interactive(agent)
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 08 Complete!"))
+    print(Colors.header(" Kata 07 Complete!"))
     print(Colors.header("=" * 70))
 
 

@@ -1,4 +1,4 @@
-# Kata 11: AgentCore Memory
+# Kata 12: AgentCore Memory
 
 ## Objective
 
@@ -117,7 +117,7 @@ from bedrock_agentcore.memory.constants import ConversationalMessage, MessageRol
 memory_manager = MemoryManager(region_name=AWS_REGION)
 
 memory = memory_manager.get_or_create_memory(
-    name="kata11_workshop_memory",
+    name="kata12_workshop_memory",
     description="Demo long-term memory",
     strategies=[
         SemanticStrategy(
@@ -187,7 +187,7 @@ python solution.py
 Expected output:
 ```
 1. Provisioning memory store
-Provisioning memory store: 'kata11_workshop_memory'
+Provisioning memory store: 'kata12_workshop_memory'
 Memory ID: mem-abc123
 [CREATING] [CREATING] [ACTIVE]
 Memory store is ACTIVE.
@@ -220,7 +220,7 @@ When you are done with the kata, delete the AgentCore Memory store to avoid ongo
 python cleanup.py
 ```
 
-This reads the memory ID from `kata11_state.json` (written by `solution.py` / `starter.py`) and deletes the memory store. The state file is gitignored — each participant manages their own resources.
+This reads the memory ID from `kata12_state.json` (written by `solution.py` / `starter.py`) and deletes the memory store. The state file is gitignored — each participant manages their own resources.
 
 ---
 

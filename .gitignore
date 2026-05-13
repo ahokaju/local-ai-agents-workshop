@@ -74,8 +74,8 @@ storage/
 # Kata 09 runtime state (contains AWS resource IDs, gitignored per-participant)
 kata-09-bedrock-knowledge-base/kata09_state.json
 
-# Kata 11 runtime state (contains AgentCore Memory ID, gitignored per-participant)
-kata-11-agentcore-memory/kata11_state.json
+# Kata 12 runtime state (contains AgentCore Memory ID, gitignored per-participant)
+kata-12-agentcore-memory/kata12_state.json
 
 # Kata 13 runtime state (contains AgentCore Gateway ID, gitignored per-participant)
 kata-13-agentcore-gateway/kata13_state.json

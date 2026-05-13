@@ -1,5 +1,5 @@
 """
-Kata 11: AgentCore Memory - Starter Template
+Kata 12: AgentCore Memory - Starter Template
 
 Complete the TODOs to give agents persistent long-term memory.
 Short-term memory holds recent turns; long-term memory extracts and indexes
@@ -26,10 +26,10 @@ from botocore.exceptions import ClientError, NoCredentialsError
 load_dotenv()
 
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
-MEMORY_NAME = "kata11_workshop_memory"
-MEMORY_DESCRIPTION = "Demo long-term memory for kata-11 workshop"
+MEMORY_NAME = "kata12_workshop_memory"
+MEMORY_DESCRIPTION = "Demo long-term memory for kata-12 workshop"
 ACTOR_ID = "alice"
-STATE_FILE = os.path.join(os.path.dirname(__file__), "kata11_state.json")
+STATE_FILE = os.path.join(os.path.dirname(__file__), "kata12_state.json")
 
 
 # ANSI color codes for terminal output
@@ -139,7 +139,7 @@ def run_session_two(memory_id: str) -> None:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 11: AgentCore Memory"))
+    print(Colors.header(" Kata 12: AgentCore Memory"))
     print(Colors.header(f" Region: {AWS_REGION}"))
     print(Colors.header("=" * 70))
 
@@ -155,7 +155,7 @@ def main():
         # with open(STATE_FILE, "w") as f:
         #     json.dump(state, f, indent=2)
         memory_id = "TODO-memory-id"
-        print(Colors.todo("TODO 5: Instantiate MemoryManager, provision memory, and save state to kata11_state.json"))
+        print(Colors.todo("TODO 5: Instantiate MemoryManager, provision memory, and save state to kata12_state.json"))
 
         print(Colors.header("\n2. Simulating Session 1 (storing turns)"))
         print("-" * 40)
@@ -173,7 +173,7 @@ def main():
         raise
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 11 Complete!"))
+    print(Colors.header(" Kata 12 Complete!"))
     print(Colors.header("=" * 70))
 
 

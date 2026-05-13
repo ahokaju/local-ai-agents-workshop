@@ -1,5 +1,5 @@
 """
-Kata 08: Strands GitHub PR Agent - Starter Template
+Kata 07: Strands GitHub PR Agent - Starter Template
 
 In this kata, you'll build a GitHub PR agent using Strands that can:
 - Create branches
@@ -232,7 +232,7 @@ def create_github_pr_agent(
 def main():
     """Run a demo of the GitHub PR agent."""
     print("=" * 60)
-    print(" Kata 08: GitHub PR Agent - Starter")
+    print(" Kata 07: GitHub PR Agent - Starter")
     print("=" * 60)
 
     # Check configuration

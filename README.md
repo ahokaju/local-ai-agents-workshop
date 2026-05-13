@@ -61,11 +61,11 @@ This session complements the main AWS Bedrock workshop by:
 │                                                                          │
 │  Kata 06          Kata 07          Kata 08                             │
 │  ┌──────────┐    ┌──────────┐    ┌──────────┐                          │
-│  │Atlassian │───▶│Atlassian │    │ GitHub   │                          │
-│  │  Agent   │    │   MCP    │    │ PR Agent │                          │
+│  │Atlassian │───▶│ GitHub   │───▶│Atlassian │                          │
+│  │  Agent   │    │ PR Agent │    │   MCP    │                          │
 │  └──────────┘    └──────────┘    └──────────┘                          │
-│     ⭐⭐            ⭐⭐⭐            ⭐⭐                                  │
-│    40 min          45 min         35 min                                │
+│     ⭐⭐            ⭐⭐            ⭐⭐⭐                                  │
+│    40 min          35 min         45 min                                │
 │                                                                          │
 ├─────────────────────────────────────────────────────────────────────────┤
 │  Track 2: AWS Bedrock + AgentCore (AWS credentials required)            │
@@ -73,34 +73,86 @@ This session complements the main AWS Bedrock workshop by:
 │  Kata 09          Kata 10          Kata 11                             │
 │  ┌──────────┐    ┌──────────┐    ┌──────────┐                          │
 │  │ Bedrock  │───▶│AgentCore │───▶│AgentCore │                          │
-│  │Knowledge │    │ Runtime  │    │  Memory  │                          │
-│  │   Base   │    │          │    │          │                          │
+│  │Knowledge │    │ Runtime  │    │  Code    │                          │
+│  │   Base   │    │          │    │Interpret.│                          │
 │  └──────────┘    └──────────┘    └──────────┘                          │
-│     ⭐⭐⭐           ⭐⭐             ⭐⭐⭐                                 │
-│    45-60 min       20 min         30-40 min                             │
+│     ⭐⭐⭐           ⭐⭐             ⭐⭐                                  │
+│    45-60 min       20 min         20-30 min                             │
 │                                                                          │
 │  Kata 12          Kata 13                                               │
 │  ┌──────────┐    ┌──────────┐                                          │
 │  │AgentCore │───▶│AgentCore │                                          │
-│  │  Code    │    │ Gateway  │                                          │
-│  │Interpret.│    │ (MCP)    │                                          │
+│  │  Memory  │    │ Gateway  │                                          │
+│  │          │    │ (MCP)    │                                          │
 │  └──────────┘    └──────────┘                                          │
-│     ⭐⭐            ⭐⭐⭐                                                 │
-│    20-30 min       25-35 min                                            │
+│     ⭐⭐⭐           ⭐⭐⭐                                                 │
+│    30-40 min       25-35 min                                            │
 │                                                                          │
-│  Track 3: AWS Preview Services (DevOps Agent + Security Agent access)   │
+│  Track 3: AWS Preview Services (Security Agent + DevOps Agent access)   │
 │                                                                          │
 │  Kata 14          Kata 15                                               │
 │  ┌──────────┐    ┌──────────┐                                          │
-│  │  DevOps  │    │Security  │                                          │
+│  │Security  │    │  DevOps  │                                          │
 │  │  Agent   │    │  Agent   │                                          │
-│  │MCP Server│    │Findings  │                                          │
+│  │Findings  │    │MCP Server│                                          │
 │  └──────────┘    └──────────┘                                          │
-│     ⭐⭐⭐           ⭐⭐                                                  │
-│    35-45 min       25-35 min                                            │
+│     ⭐⭐            ⭐⭐⭐                                                 │
+│    25-35 min       35-45 min                                            │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Kata Summary
+
+### Track 1 — Anthropic + Strands (no AWS required)
+
+| Kata | Focus | Difficulty | Time |
+|------|-------|------------|------|
+| **01** | Anthropic API Basics — Messages API, streaming, tokens | ⭐ Beginner | 20-25 min |
+| **02** | Strands Introduction — Agent class, model providers | ⭐ Beginner | 25-30 min |
+| **03** | Strands with Tools — `@tool` decorator, custom tools | ⭐⭐ Intermediate | 30-40 min |
+| **04** | Local RAG — LlamaIndex, embeddings, indexing | ⭐⭐ Intermediate | 30-40 min |
+| **05** | RAG Agent — retrieval as a tool, knowledge-augmented agent | ⭐⭐⭐ Advanced | 40-50 min |
+| **06** | Atlassian Agent — Jira/Confluence API, productivity tools | ⭐⭐ Intermediate | 35-45 min |
+| **07** | GitHub PR Agent — GitHub API, PR workflows, PyGithub | ⭐⭐ Intermediate | 30-40 min |
+| **08** | Atlassian MCP — MCP protocol, standardized tools | ⭐⭐⭐ Advanced | 40-50 min |
+
+### Track 2 — AWS Bedrock + AgentCore (AWS credentials required)
+
+| Kata | Focus | Difficulty | Time |
+|------|-------|------------|------|
+| **09** | Bedrock Knowledge Base — S3 Vectors, KB ingestion, RAG agent | ⭐⭐⭐ Advanced | 45-60 min |
+| **10** | AgentCore Runtime — BedrockAgentCoreApp, HTTP server, health checks | ⭐⭐ Intermediate | 20-30 min |
+| **11** | AgentCore Code Interpreter — sandboxed code execution, autonomous coding agent | ⭐⭐ Intermediate | 20-30 min |
+| **12** | AgentCore Memory — persistent memory, SemanticStrategy, cross-session recall | ⭐⭐⭐ Advanced | 30-40 min |
+| **13** | AgentCore Gateway — REST→MCP auto-generation, OpenAPI schema, credential injection | ⭐⭐⭐ Advanced | 25-35 min |
+
+### Track 3 — AWS Preview Services (Security Agent + DevOps Agent access)
+
+| Kata | Focus | Difficulty | Time |
+|------|-------|------------|------|
+| **14** | Security Agent Findings — PR findings via GitHub comments + Strands | ⭐⭐ Intermediate | 25-35 min |
+| **15** | DevOps Agent MCP — custom MCP server consumed by DevOps Agent | ⭐⭐⭐ Advanced | 35-45 min |
+
+---
+
+## How to Use This Workshop
+
+### Self-Paced Learning
+
+1. **Read the README** for each kata to understand the objectives
+2. **Try the starter.py** first - complete the TODOs yourself
+3. **Check solution.py** when stuck or to compare your approach
+4. **Run and experiment** - modify code to deepen understanding
+
+### Instructor-Led
+
+1. **Instructor demos** solution.py with explanations
+2. **Participants follow** along or code independently
+3. **Discussion** of concepts and real-world applications
+4. **Q&A** and extension challenges
 
 ---
 
@@ -113,17 +165,17 @@ This session complements the main AWS Bedrock workshop by:
   - AWS Bedrock bearer token (runs `*_bedrock.py` variants instead)
 - Basic Python knowledge
 
-### For Atlassian Katas (06-07)
+### For Atlassian Katas (06, 08)
 - Atlassian Cloud account ([free tier available](https://www.atlassian.com/try))
 - Atlassian API token ([create here](https://id.atlassian.com/manage-profile/security/api-tokens))
 
-### For MCP Kata (07)
-- Uses the included `mcp_server.py` (no additional setup required)
-- Optional: Node.js v18+ (for official Atlassian MCP)
-
-### For GitHub Kata (08)
+### For GitHub Kata (07)
 - GitHub account
 - GitHub Personal Access Token with `repo` scope ([create here](https://github.com/settings/tokens))
+
+### For MCP Kata (08)
+- Uses the included `mcp_server.py` (no additional setup required)
+- Optional: Node.js v18+ (for official Atlassian MCP)
 
 ### For AWS AgentCore Katas (09–13)
 - AWS account with Bedrock and AgentCore enabled
@@ -131,10 +183,28 @@ This session complements the main AWS Bedrock workshop by:
 - Katas 09–13 run **only** the `solution.py` / `starter.py` variants (Bedrock-native)
 
 ### For AWS Preview Katas (14–15)
-- AWS account with **DevOps Agent** and/or **Security Agent** preview access
-- Request access at [aws.amazon.com/devops-agent](https://aws.amazon.com/devops-agent) and [aws.amazon.com/security-agent](https://aws.amazon.com/security-agent)
-- Kata 14 (DevOps Agent): `us-east-1` only; requires downloading the custom service model JSON
-- Kata 15 (Security Agent): requires a GitHub repo connected to Security Agent with at least one reviewed PR; uses PyGithub to fetch findings (no boto3 — Security Agent has no public API in preview)
+- AWS account with **Security Agent** and/or **DevOps Agent** preview access
+- Request access at [aws.amazon.com/security-agent](https://aws.amazon.com/security-agent) and [aws.amazon.com/devops-agent](https://aws.amazon.com/devops-agent)
+- Kata 14 (Security Agent): requires a GitHub repo connected to Security Agent with at least one reviewed PR; uses PyGithub to fetch findings (no boto3 — Security Agent has no public API in preview)
+- Kata 15 (DevOps Agent): `us-east-1` only; requires downloading the custom service model JSON
+
+---
+
+## Cost Considerations
+
+| Component | Cost |
+|-----------|------|
+| Anthropic API (Claude Sonnet) | ~$3 input / $15 output per MTok |
+| Local embeddings (HuggingFace) | Free |
+| LlamaIndex | Free |
+| Atlassian Cloud (free tier) | Free |
+
+**Estimated workshop cost**: $5-10 total for API calls
+
+**Tips to minimize costs**:
+- Use Claude Haiku for testing ($0.25/$1.25 per MTok)
+- Limit `max_tokens` during development
+- Reuse indexed documents
 
 ---
 
@@ -229,40 +299,6 @@ See [`docker/DOCKER.md`](docker/DOCKER.md) for full Docker instructions includin
 
 ---
 
-## Kata Summary
-
-### Track 1 — Anthropic + Strands (no AWS required)
-
-| Kata | Focus | Difficulty | Time |
-|------|-------|------------|------|
-| **01** | Anthropic API Basics — Messages API, streaming, tokens | ⭐ Beginner | 20-25 min |
-| **02** | Strands Introduction — Agent class, model providers | ⭐ Beginner | 25-30 min |
-| **03** | Strands with Tools — `@tool` decorator, custom tools | ⭐⭐ Intermediate | 30-40 min |
-| **04** | Local RAG — LlamaIndex, embeddings, indexing | ⭐⭐ Intermediate | 30-40 min |
-| **05** | RAG Agent — retrieval as a tool, knowledge-augmented agent | ⭐⭐⭐ Advanced | 40-50 min |
-| **06** | Atlassian Agent — Jira/Confluence API, productivity tools | ⭐⭐ Intermediate | 35-45 min |
-| **07** | Atlassian MCP — MCP protocol, standardized tools | ⭐⭐⭐ Advanced | 40-50 min |
-| **08** | GitHub PR Agent — GitHub API, PR workflows, PyGithub | ⭐⭐ Intermediate | 30-40 min |
-
-### Track 2 — AWS Bedrock + AgentCore (AWS credentials required)
-
-| Kata | Focus | Difficulty | Time |
-|------|-------|------------|------|
-| **09** | Bedrock Knowledge Base — S3 Vectors, KB ingestion, RAG agent | ⭐⭐⭐ Advanced | 45-60 min |
-| **10** | AgentCore Runtime — BedrockAgentCoreApp, HTTP server, health checks | ⭐⭐ Intermediate | 20-30 min |
-| **11** | AgentCore Memory — persistent memory, SemanticStrategy, cross-session recall | ⭐⭐⭐ Advanced | 30-40 min |
-| **12** | AgentCore Code Interpreter — sandboxed code execution, autonomous coding agent | ⭐⭐ Intermediate | 20-30 min |
-| **13** | AgentCore Gateway — REST→MCP auto-generation, OpenAPI schema, credential injection | ⭐⭐⭐ Advanced | 25-35 min |
-
-### Track 3 — AWS Preview Services (DevOps Agent + Security Agent access)
-
-| Kata | Focus | Difficulty | Time |
-|------|-------|------------|------|
-| **14** | DevOps Agent MCP — custom MCP server consumed by DevOps Agent | ⭐⭐⭐ Advanced | 35-45 min |
-| **15** | Security Agent Findings — PR findings via GitHub comments + Strands | ⭐⭐ Intermediate | 25-35 min |
-
----
-
 ## Folder Structure
 
 ```
@@ -305,18 +341,18 @@ local-ai-agents-workshop/
 │   ├── starter.py
 │   └── solution.py
 │
-├── kata-07-atlassian-mcp/
-│   ├── README.md
-│   ├── mcp_server.py        # Simple HTTP MCP server
-│   ├── starter.py
-│   └── solution.py
-│
-├── kata-08-github-pr-agent/
+├── kata-07-github-pr-agent/
 │   ├── README.md
 │   ├── github_tools.py      # Reusable GitHub tools module
 │   ├── starter.py
 │   ├── solution.py
 │   └── test_github_tools.py # Unit tests
+│
+├── kata-08-atlassian-mcp/
+│   ├── README.md
+│   ├── mcp_server.py        # Simple HTTP MCP server
+│   ├── starter.py
+│   └── solution.py
 │
 │  Track 2 — AWS Bedrock + AgentCore
 │
@@ -333,94 +369,36 @@ local-ai-agents-workshop/
 │   ├── starter.py
 │   └── solution.py
 │
-├── kata-11-agentcore-memory/
+├── kata-11-agentcore-code-interpreter/
+│   ├── README.md
+│   ├── starter.py
+│   └── solution.py
+│
+├── kata-12-agentcore-memory/
 │   ├── README.md
 │   ├── starter.py
 │   ├── solution.py
 │   └── cleanup.py           # Deletes AgentCore Memory store
 │
-├── kata-12-agentcore-code-interpreter/
+├── kata-13-agentcore-gateway/
+│   ├── README.md
+│   ├── starter.py
+│   ├── solution.py
+│   └── cleanup.py           # Deletes Gateway, IAM role, and Secrets Manager secret
+│
+│  Track 3 — AWS Preview Services
+│
+├── kata-14-security-agent/
 │   ├── README.md
 │   ├── starter.py
 │   └── solution.py
 │
-└── kata-13-agentcore-gateway/
+└── kata-15-devops-agent/
     ├── README.md
+    ├── mcp_server.py        # FastMCP Streamable HTTP server for DevOps Agent
     ├── starter.py
-    ├── solution.py
-    └── cleanup.py           # Deletes Gateway, IAM role, and Secrets Manager secret
+    └── solution.py
 ```
-
----
-
-## How to Use This Workshop
-
-### Self-Paced Learning
-
-1. **Read the README** for each kata to understand the objectives
-2. **Try the starter.py** first - complete the TODOs yourself
-3. **Check solution.py** when stuck or to compare your approach
-4. **Run and experiment** - modify code to deepen understanding
-
-### Instructor-Led
-
-1. **Instructor demos** solution.py with explanations
-2. **Participants follow** along or code independently
-3. **Discussion** of concepts and real-world applications
-4. **Q&A** and extension challenges
-
----
-
-## Cost Considerations
-
-| Component | Cost |
-|-----------|------|
-| Anthropic API (Claude Sonnet) | ~$3 input / $15 output per MTok |
-| Local embeddings (HuggingFace) | Free |
-| LlamaIndex | Free |
-| Atlassian Cloud (free tier) | Free |
-
-**Estimated workshop cost**: $5-10 total for API calls
-
-**Tips to minimize costs**:
-- Use Claude Haiku for testing ($0.25/$1.25 per MTok)
-- Limit `max_tokens` during development
-- Reuse indexed documents
-
----
-
-## Comparison with AWS Bedrock Workshop
-
-This session teaches the same concepts as the AWS workshop but with:
-
-**Simpler Setup**
-- No AWS account needed
-- Single API key authentication
-- Local resources (no cloud costs beyond API)
-
-**Same Patterns**
-- Agent architecture (Strands works with both Bedrock and Anthropic)
-- Tool definition and execution
-- RAG concepts and implementation
-- Conversation management
-
-**Different Focus**
-- Direct API access vs managed service
-- Local RAG vs cloud-hosted
-- Enterprise tool integration (Atlassian)
-- MCP protocol for portability
-
----
-
-## Next Steps After Workshop
-
-1. **Build a real project** using these patterns
-2. **Try AWS Bedrock** workshop for production deployment
-3. **Explore other MCP servers** (GitHub, Slack, etc.)
-4. **Contribute to Strands** (open-source)
-5. **Join communities**:
-   - [Strands Discord](https://strandsagents.com/)
-   - [Anthropic Discord](https://discord.gg/anthropic)
 
 ---
 
@@ -471,6 +449,18 @@ Connection refused
 ### Tutorials
 - [Strands + Anthropic Guide](https://dev.to/aws/using-strands-agents-with-anthropic-20jn)
 - [RAG Best Practices](https://www.anthropic.com/research/rag-best-practices)
+
+---
+
+## Next Steps After Workshop
+
+1. **Build a real project** using these patterns
+2. **Try AWS Bedrock** workshop for production deployment
+3. **Explore other MCP servers** (GitHub, Slack, etc.)
+4. **Contribute to Strands** (open-source)
+5. **Join communities**:
+   - [Strands Discord](https://strandsagents.com/)
+   - [Anthropic Discord](https://discord.gg/anthropic)
 
 ---
 

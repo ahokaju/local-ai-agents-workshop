@@ -137,7 +137,7 @@ Files to update:
 | `kata-04-local-rag/solution_bedrock.py` | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` |
 | `kata-05-rag-agent/solution_bedrock.py` | `eu.anthropic.claude-sonnet-4-5-20250929-v1:0` |
 | `kata-06-atlassian-agent/solution_bedrock.py` | `eu.anthropic.claude-haiku-4-5-20251001-v1:0` |
-| `kata-08-github-pr-agent/solution_bedrock.py` | `eu.anthropic.claude-haiku-4-5-20251001-v1:0` |
+| `kata-07-github-pr-agent/solution_bedrock.py` | `eu.anthropic.claude-haiku-4-5-20251001-v1:0` |
 
 > **Tip**: `anthropic.claude-3-haiku-20240307-v1:0` (without a region prefix) is a base model ID that can be used directly in any region without a cross-region inference profile.
 

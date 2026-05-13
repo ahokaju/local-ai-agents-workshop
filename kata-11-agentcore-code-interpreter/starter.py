@@ -1,5 +1,5 @@
 """
-Kata 12: AgentCore Code Interpreter - Starter Template
+Kata 11: AgentCore Code Interpreter - Starter Template
 
 Complete the TODOs to add AgentCore's sandboxed Code Interpreter to a
 Strands agent. The agent will write and execute Python code in a secure
@@ -91,7 +91,7 @@ def build_agent():
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 12: AgentCore Code Interpreter"))
+    print(Colors.header(" Kata 11: AgentCore Code Interpreter"))
     print(Colors.header(f" Region: {AWS_REGION}  |  Model: {DEFAULT_MODEL}"))
     print(Colors.header("=" * 70))
     print(Colors.stats("\nCode runs in an isolated AWS sandbox — no local execution.\n"))
@@ -141,7 +141,7 @@ def main():
         print("Set AWS_BEARER_TOKEN_BEDROCK and AWS_REGION environment variables.")
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 12 Complete!"))
+    print(Colors.header(" Kata 11 Complete!"))
     print(Colors.header("=" * 70))
 
 

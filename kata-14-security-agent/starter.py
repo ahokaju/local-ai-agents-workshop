@@ -1,5 +1,5 @@
 """
-Kata 15: AWS Security Agent — PR Findings Analyzer - Starter Template
+Kata 14: AWS Security Agent — PR Findings Analyzer - Starter Template
 
 Complete the TODOs to build a Strands agent that retrieves security findings
 from GitHub PR review comments posted by AWS Security Agent, then generates
@@ -8,7 +8,7 @@ a prioritized remediation report.
 Why GitHub comments instead of boto3?
     AWS Security Agent is in preview with no public boto3 client or CLI yet.
     Code review findings are accessible via the GitHub PR review comments that
-    Security Agent posts automatically — so we use PyGithub (from kata-08).
+    Security Agent posts automatically — so we use PyGithub (from kata-07).
 
 Prerequisites:
     pip install 'strands-agents[bedrock]' PyGithub boto3 python-dotenv
@@ -241,7 +241,7 @@ def run_remediation_agent(repo: str, pr_number: int) -> None:
 
 def main():
     print(Colors.header("=" * 70))
-    print(Colors.header(" Kata 15: AWS Security Agent - PR Findings Analyzer"))
+    print(Colors.header(" Kata 14: AWS Security Agent - PR Findings Analyzer"))
     print(Colors.header(f" Region: {AWS_REGION}  |  Model: {DEFAULT_MODEL}"))
     print(Colors.header("=" * 70))
 
@@ -268,7 +268,7 @@ def main():
     run_remediation_agent(GITHUB_REPO, PR_NUMBER)
 
     print(Colors.header("\n" + "=" * 70))
-    print(Colors.header(" Kata 15 Complete!"))
+    print(Colors.header(" Kata 14 Complete!"))
     print(Colors.header("=" * 70))
 
 

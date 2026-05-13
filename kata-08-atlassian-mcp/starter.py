@@ -1,5 +1,5 @@
 """
-Kata 07: Atlassian MCP Server - Starter Template
+Kata 08: Atlassian MCP Server - Starter Template
 
 Learn to use the Model Context Protocol (MCP) with Atlassian services.
 
@@ -123,7 +123,7 @@ def demo_confluence_search(client: MCPClient):
 def main():
     """Run the MCP demo."""
     print("=" * 70)
-    print(" Kata 07: Atlassian MCP Server")
+    print(" Kata 08: Atlassian MCP Server")
     print("=" * 70)
 
     # Create MCP client
@@ -155,7 +155,7 @@ def main():
     demo_confluence_search(client)
 
     print("\n" + "=" * 70)
-    print(" Kata 07 Complete!")
+    print(" Kata 08 Complete!")
     print("=" * 70)
     print("\nReflection Questions:")
     print("- How does this compare to Kata 06 (direct API)?")

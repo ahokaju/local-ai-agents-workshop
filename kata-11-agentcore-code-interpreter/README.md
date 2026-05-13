@@ -1,4 +1,4 @@
-# Kata 12: AgentCore Code Interpreter
+# Kata 11: AgentCore Code Interpreter
 
 ## Objective
 

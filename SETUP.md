@@ -296,17 +296,17 @@ print(f"Connected! Found {len(projects)} projects")
 
 ## 5. MCP Server Setup
 
-For Kata 07, the workshop includes a simple HTTP MCP server (`mcp_server.py`).
+For Kata 08, the workshop includes a simple HTTP MCP server (`mcp_server.py`).
 
 ### Primary Option: Included MCP Server
 
-The workshop includes `kata-07-atlassian-mcp/mcp_server.py` - a simple HTTP-based MCP server.
+The workshop includes `kata-08-atlassian-mcp/mcp_server.py` - a simple HTTP-based MCP server.
 
 **No additional setup required** - just ensure your Atlassian credentials are configured (step 4).
 
 ```bash
 # Start the MCP server
-cd kata-07-atlassian-mcp
+cd kata-08-atlassian-mcp
 python mcp_server.py
 ```
 

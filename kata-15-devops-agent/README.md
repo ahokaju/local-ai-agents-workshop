@@ -1,4 +1,4 @@
-# Kata 14: AWS DevOps Agent — Custom MCP Integration
+# Kata 15: AWS DevOps Agent — Custom MCP Integration
 
 > **Preview service**: AWS DevOps Agent is currently in Public Preview in **us-east-1 only**.
 > You need an AWS account with DevOps Agent access. Request access at
@@ -9,7 +9,7 @@
 
 Build a custom MCP server that AWS DevOps Agent calls when investigating incidents. This
 kata shows how a managed AWS agent can *consume* your MCP server to access internal tools
-— the reverse of kata-07 (your agent → MCP server) and kata-13 (your agent → Gateway).
+— the reverse of kata-08 (your agent → MCP server) and kata-13 (your agent → Gateway).
 
 Here, **DevOps Agent is the agent** and **you provide the tools**.
 
@@ -23,7 +23,7 @@ Here, **DevOps Agent is the agent** and **you provide the tools**.
 
 ## Prerequisites
 
-- Completed Kata 07 (MCP server) and Kata 13 (MCP + AgentCore Gateway)
+- Completed Kata 08 (MCP server) and Kata 13 (MCP + AgentCore Gateway)
 - AWS account with DevOps Agent access (us-east-1)
 - AWS CLI configured with appropriate permissions
 - `AWS_REGION=us-east-1` (DevOps Agent Preview is us-east-1 only)
@@ -52,7 +52,7 @@ CloudWatch Alarm / webhook trigger
     ↓
 AWS DevOps Agent (managed service, us-east-1 only)
     ↓ [Streamable HTTP MCP protocol + API key]
-Your MCP server (kata-14/mcp_server.py)
+Your MCP server (kata-15/mcp_server.py)
     → tool: get_deployment_history(service, hours)
     → tool: query_runbook(incident_type)
     → tool: get_team_oncall(service)
@@ -89,9 +89,9 @@ an investigation report with root cause + next steps
 ### Key Concept: MCP Transport Protocol
 
 DevOps Agent **requires Streamable HTTP transport** for MCP servers. This is different
-from the plain REST server in kata-07:
+from the plain REST server in kata-08:
 
-| Kata 07 (plain HTTP) | Kata 14 (Streamable HTTP MCP) |
+| Kata 08 (plain HTTP) | Kata 15 (Streamable HTTP MCP) |
 |----------------------|-------------------------------|
 | Custom `HTTPServer` class | FastMCP (`mcp` library) |
 | REST endpoints (`/mcp/v1/tools`, `/mcp/v1/invoke`) | Standard MCP protocol |
@@ -100,8 +100,8 @@ from the plain REST server in kata-07:
 
 ### Key Concept: DevOps Agent as MCP Consumer
 
-In katas 07 and 13, *you* built an agent that consumed an MCP server.
-In kata 14, *AWS DevOps Agent* is the consumer. Your job is to expose your
+In katas 08 and 13, *you* built an agent that consumed an MCP server.
+In kata 15, *AWS DevOps Agent* is the consumer. Your job is to expose your
 internal tools (deployments, runbooks, on-call) so the managed agent can use them.
 
 ### Service Identity
@@ -151,14 +151,14 @@ client = boto3.client(
 
 **Option A — Console:**
 1. Sign in to [AWS Console](https://console.aws.amazon.com/devopsagent/)
-2. Click **Create agent space**, enter a name (e.g., `kata-14-agent-space`)
+2. Click **Create agent space**, enter a name (e.g., `kata-15-agent-space`)
 3. Complete the wizard and note the **AgentSpace ID**
 
 **Option B — CLI:**
 ```bash
 aws devopsagent create-agent-space \
-  --name "kata-14-agent-space" \
-  --description "Kata 14 workshop agent space" \
+  --name "kata-15-agent-space" \
+  --description "Kata 15 workshop agent space" \
   --endpoint-url "https://api.prod.cp.aidevops.us-east-1.api.aws" \
   --region us-east-1
 # Response includes agentSpaceId — save it
@@ -201,14 +201,14 @@ aws devopsagent register-service \
   --service mcpserver \
   --service-details '{
     "mcpserver": {
-      "name": "kata14-ops-tools",
+      "name": "kata15-ops-tools",
       "endpoint": "https://your-ngrok-url.ngrok.io/mcp",
       "description": "Internal ops tools: deployments, runbooks, on-call",
       "authorizationConfig": {
         "apiKey": {
           "apiKeyHeader": "X-Api-Key",
-          "apiKeyName": "kata14-mcp-key",
-          "apiKeyValue": "kata14-dev-key"
+          "apiKeyName": "kata15-mcp-key",
+          "apiKeyValue": "kata15-dev-key"
         }
       }
     }
@@ -224,7 +224,7 @@ aws devopsagent associate-service \
   --service-id $MCP_SERVICE_ID \
   --configuration '{
     "mcpserver": {
-      "name": "kata14-ops-tools",
+      "name": "kata15-ops-tools",
       "endpoint": "https://your-ngrok-url.ngrok.io/mcp"
     }
   }' \
@@ -248,8 +248,8 @@ export DEVOPS_AGENT_WEBHOOK_ID=<webhookId>
 ### Running the MCP Server
 
 ```bash
-cd kata-14-devops-agent
-export MCP_API_KEY=kata14-dev-key
+cd kata-15-devops-agent
+export MCP_API_KEY=kata15-dev-key
 python mcp_server.py
 # Starts on http://localhost:8001/mcp (Streamable HTTP transport)
 ```
@@ -257,7 +257,7 @@ python mcp_server.py
 ### Running the boto3 Inspector
 
 ```bash
-cd kata-14-devops-agent
+cd kata-15-devops-agent
 export DEVOPS_AGENT_SPACE_ID=<your-agent-space-id>
 python solution.py
 ```
@@ -265,14 +265,14 @@ python solution.py
 Expected output:
 ```
 ===========================================================
- Kata 14: AWS DevOps Agent - Solution
+ Kata 15: AWS DevOps Agent - Solution
  Region: us-east-1
 ===========================================================
 
 1. Listing AgentSpaces
 ----------------------------------------
 Found 1 AgentSpace(s):
-  - kata-14-agent-space (ID: as-abc123)
+  - kata-15-agent-space (ID: as-abc123)
 
 2. AgentSpace associations
 ----------------------------------------
