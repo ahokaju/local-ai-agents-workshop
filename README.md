@@ -233,26 +233,33 @@ See [`docker/DOCKER.md`](docker/DOCKER.md) for full Docker instructions includin
 
 ### Track 1 — Anthropic + Strands (no AWS required)
 
-| Kata | Topic | Skills | Time | Difficulty |
-|------|-------|--------|------|------------|
-| 01 | Anthropic API Basics | Messages API, streaming, tokens | 20-25 min | ⭐ |
-| 02 | Strands Introduction | Agent class, model providers | 25-30 min | ⭐ |
-| 03 | Strands with Tools | @tool decorator, custom tools | 30-40 min | ⭐⭐ |
-| 04 | Local RAG | LlamaIndex, embeddings, indexing | 30-40 min | ⭐⭐ |
-| 05 | RAG Agent | RAG as tool, knowledge-augmented agent | 40-50 min | ⭐⭐⭐ |
-| 06 | Atlassian Agent | Jira/Confluence API, productivity tools | 35-45 min | ⭐⭐ |
-| 07 | Atlassian MCP | MCP protocol, standardized tools | 40-50 min | ⭐⭐⭐ |
-| 08 | GitHub PR Agent | GitHub API, PR workflows, PyGithub | 30-40 min | ⭐⭐ |
+| Kata | Focus | Difficulty | Time |
+|------|-------|------------|------|
+| **01** | Anthropic API Basics — Messages API, streaming, tokens | ⭐ Beginner | 20-25 min |
+| **02** | Strands Introduction — Agent class, model providers | ⭐ Beginner | 25-30 min |
+| **03** | Strands with Tools — `@tool` decorator, custom tools | ⭐⭐ Intermediate | 30-40 min |
+| **04** | Local RAG — LlamaIndex, embeddings, indexing | ⭐⭐ Intermediate | 30-40 min |
+| **05** | RAG Agent — retrieval as a tool, knowledge-augmented agent | ⭐⭐⭐ Advanced | 40-50 min |
+| **06** | Atlassian Agent — Jira/Confluence API, productivity tools | ⭐⭐ Intermediate | 35-45 min |
+| **07** | Atlassian MCP — MCP protocol, standardized tools | ⭐⭐⭐ Advanced | 40-50 min |
+| **08** | GitHub PR Agent — GitHub API, PR workflows, PyGithub | ⭐⭐ Intermediate | 30-40 min |
 
 ### Track 2 — AWS Bedrock + AgentCore (AWS credentials required)
 
-| Kata | Topic | Skills | Time | Difficulty |
-|------|-------|--------|------|------------|
-| 09 | Bedrock Knowledge Base | S3 Vectors, KB ingestion, RAG agent | 45-60 min | ⭐⭐⭐ |
-| 10 | AgentCore Runtime | BedrockAgentCoreApp, HTTP server, health checks | 20-30 min | ⭐⭐ |
-| 11 | AgentCore Memory | Persistent memory, SemanticStrategy, cross-session recall | 30-40 min | ⭐⭐⭐ |
-| 12 | AgentCore Code Interpreter | Sandboxed code execution, autonomous coding agent | 20-30 min | ⭐⭐ |
-| 13 | AgentCore Gateway | REST→MCP auto-generation, OpenAPI schema, credential injection | 25-35 min | ⭐⭐⭐ |
+| Kata | Focus | Difficulty | Time |
+|------|-------|------------|------|
+| **09** | Bedrock Knowledge Base — S3 Vectors, KB ingestion, RAG agent | ⭐⭐⭐ Advanced | 45-60 min |
+| **10** | AgentCore Runtime — BedrockAgentCoreApp, HTTP server, health checks | ⭐⭐ Intermediate | 20-30 min |
+| **11** | AgentCore Memory — persistent memory, SemanticStrategy, cross-session recall | ⭐⭐⭐ Advanced | 30-40 min |
+| **12** | AgentCore Code Interpreter — sandboxed code execution, autonomous coding agent | ⭐⭐ Intermediate | 20-30 min |
+| **13** | AgentCore Gateway — REST→MCP auto-generation, OpenAPI schema, credential injection | ⭐⭐⭐ Advanced | 25-35 min |
+
+### Track 3 — AWS Preview Services (DevOps Agent + Security Agent access)
+
+| Kata | Focus | Difficulty | Time |
+|------|-------|------------|------|
+| **14** | DevOps Agent MCP — custom MCP server consumed by DevOps Agent | ⭐⭐⭐ Advanced | 35-45 min |
+| **15** | Security Agent Findings — PR findings via GitHub comments + Strands | ⭐⭐ Intermediate | 25-35 min |
 
 ---
 
