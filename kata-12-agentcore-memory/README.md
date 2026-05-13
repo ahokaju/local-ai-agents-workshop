@@ -140,7 +140,7 @@ session_mgr = MemorySessionManager(memory_id=memory_id, region_name=AWS_REGION)
 session1 = session_mgr.create_memory_session(actor_id="alice", session_id="session-001")
 
 session1.add_turns(messages=[
-    ConversationalMessage("Hi! My name is Alice and I'm a cloud architect at Vaisala.", MessageRole.USER),
+    ConversationalMessage("Hi! My name is Alice and I'm a cloud architect at Acme.", MessageRole.USER),
     ConversationalMessage("Hello Alice! Great to meet you.", MessageRole.ASSISTANT),
     ConversationalMessage("I'm building a real-time data pipeline for IoT sensor data on AWS.", MessageRole.USER),
     ConversationalMessage("AWS IoT Core and Kinesis work well for that.", MessageRole.ASSISTANT),
@@ -194,14 +194,14 @@ Memory store is ACTIVE.
 
 2. Simulating Session 1 (storing turns)
 Stored 6 conversation turns in session-001.
-  User: Hi! My name is Alice and I'm a cloud architect at Vaisala.
+  User: Hi! My name is Alice and I'm a cloud architect at Acme.
   Agent: Hello Alice! Great to meet you.
   ...
 Waiting for long-term memory extraction (30 s)...
 
 3. Simulating Session 2 (semantic recall)
 Query: Who is this user and what is their job role?
-  [1] (score=0.923) Alice is a cloud architect at Vaisala.
+  [1] (score=0.923) Alice is a cloud architect at Acme.
   [2] (score=0.871) The user is building an IoT data pipeline on AWS.
 
 Query: What programming language and IaC tool does the user prefer?

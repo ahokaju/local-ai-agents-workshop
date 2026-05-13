@@ -91,7 +91,7 @@ cd kata-03b-browser-tools
 python solution.py
 
 # Test a custom URL
-python solution.py https://www.vaisala.com
+python solution.py https://example.com
 python solution.py https://strandsagents.com/latest/
 ```
 

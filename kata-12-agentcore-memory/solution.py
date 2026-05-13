@@ -112,7 +112,7 @@ def run_session_one(memory_id: str) -> None:
     )
 
     turns = [
-        (MessageRole.USER,      "Hi! My name is Alice and I'm a cloud architect at Vaisala."),
+        (MessageRole.USER,      "Hi! My name is Alice and I'm a cloud architect at Acme."),
         (MessageRole.ASSISTANT, "Hello Alice! Great to meet you. How can I help with your cloud work?"),
         (MessageRole.USER,      "I'm building a real-time data pipeline for IoT sensor data on AWS."),
         (MessageRole.ASSISTANT, "That sounds like a great project! AWS IoT Core, Kinesis, and Lambda work well together for that."),

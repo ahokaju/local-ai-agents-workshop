@@ -34,7 +34,7 @@ export KB_ROLE_ARN=arn:aws:iam::123456789012:role/your-existing-kb-role
 
 ## Documents
 
-Place PDF files in the `DOCS/` folder at the repository root. The sample Vaisala technical documents (AP10 access point manuals, VaiNet firmware guide, SSL/TLS certificate guide) are already there.
+Place any PDF files in the `DOCS/` folder at the repository root (gitignored). Suitable examples: technical product manuals, firmware guides, security/SSL-TLS configuration guides — any text-rich PDFs work. The example output below assumes generic networking device documentation.
 
 ## Time Estimate
 
@@ -74,7 +74,7 @@ Place PDF files in the `DOCS/` folder at the repository root. The sample Vaisala
                                                    │ retrieve()
                  ┌─────────────────────────────────▼──────────────────┐
                  │             Strands Agent (BedrockModel)            │
-                 │  @tool search_vaisala_docs → retrieve() API call    │
+                 │  @tool search_docs → retrieve() API call    │
                  └────────────────────────────────────────────────────┘
 ```
 
@@ -108,8 +108,8 @@ Build a Python script that:
 3. Creates (or reuses) an IAM role with Bedrock + S3 + S3 Vectors permissions
 4. Creates a Bedrock Knowledge Base pointing at the S3 Vectors index
 5. Starts an ingestion job and polls until `COMPLETE`
-6. Defines a `search_vaisala_docs` `@tool` that calls `retrieve()`
-7. Creates a Strands agent with the search tool and answers Vaisala-specific questions
+6. Defines a `search_docs` `@tool` that calls `retrieve()`
+7. Creates a Strands agent with the search tool and answers questions grounded in the indexed PDFs
 
 ### Success Criteria
 
@@ -118,7 +118,7 @@ Build a Python script that:
 - [ ] Knowledge Base created with `S3_VECTORS`
 - [ ] Ingestion job completes with `COMPLETE` status
 - [ ] Agent uses the retrieval tool to answer document-grounded questions
-- [ ] Answers reference specific content from the Vaisala PDFs
+- [ ] Answers reference specific content from your PDFs
 - [ ] `chat.py` connects to the running KB for interactive Q&A
 
 ---
@@ -195,7 +195,7 @@ kb_id = kb["knowledgeBase"]["knowledgeBaseId"]
 
 ```python
 ds = bedrock_agent.create_data_source(
-    knowledgeBaseId=kb_id, name="vaisala-docs",
+    knowledgeBaseId=kb_id, name="workshop-docs",
     dataSourceConfiguration={
         "type": "S3",
         "s3Configuration": {"bucketArn": f"arn:aws:s3:::{BUCKET_NAME}"}
@@ -225,8 +225,8 @@ while True:
 from strands import tool
 
 @tool
-def search_vaisala_docs(query: str) -> str:
-    """Search the Vaisala technical documentation knowledge base.
+def search_docs(query: str) -> str:
+    """Search the technical documentation knowledge base.
 
     Args:
         query: The question or topic to search for.
@@ -250,11 +250,11 @@ from strands.models.bedrock import BedrockModel
 
 agent = Agent(
     model=BedrockModel(model_id=DEFAULT_MODEL, region_name=AWS_REGION),
-    tools=[search_vaisala_docs],
-    system_prompt="You are a Vaisala technical support assistant. Always search documentation before answering."
+    tools=[search_docs],
+    system_prompt="You are a technical documentation assistant. Always search the knowledge base before answering."
 )
 
-response = agent("What are the steps to update VaiNet device firmware?")
+response = agent("What are the steps to update MeshLink device firmware?")
 print(response)
 ```
 
@@ -271,8 +271,8 @@ Expected output:
 ```
 1. Uploading documents to S3
 Creating S3 bucket: kata09-kb-docs-a1b2c3d4
-  Uploading: AP10_User_Guide.pdf
-  Uploading: VaiNet_Firmware_Guide.pdf
+  Uploading: AP-100_User_Guide.pdf
+  Uploading: MeshLink_Firmware_Guide.pdf
   [state saved → kata09_state.json]
 
 2. Creating S3 Vectors store
@@ -291,8 +291,8 @@ Knowledge Base created: ABCDEF1234
 Ingestion complete!
 
 6. Querying with Strands agent
-User: What are the steps to update VaiNet device firmware?
-Agent: According to the VaiNet documentation, firmware updates involve ...
+User: What are the steps to update MeshLink device firmware?
+Agent: According to the MeshLink documentation, firmware updates involve ...
 ```
 
 > **Note:** Ingestion is typically fast (under a minute for a few PDFs). `kata09_state.json` is written after each step — if the script fails partway through, run `python cleanup.py` before retrying.
@@ -309,14 +309,14 @@ python chat.py
 
 ```
 ============================================================
- Vaisala KB Chat
+ Workshop KB Chat
  KB: ABCDEF1234  |  Region: us-east-1
 ============================================================
  Type your question and press Enter.
  Commands: /quit  /clear  /help
 
-You: What is the default login for the AP10 web interface?
-Agent: The default login credentials for the AP10 web interface are:
+You: What is the default login for the AP-100 web interface?
+Agent: The default login credentials for the AP-100 web interface are:
   Username: apadmin
   Password: ap123456
 ...
@@ -336,7 +336,7 @@ Goodbye!
 | `/clear` | Start a fresh conversation (clears history) |
 | `/help` | Show available commands |
 
-The agent maintains full conversation history within a session — follow-up questions work naturally. Each call to `search_vaisala_docs` retrieves the top 5 chunks from the KB.
+The agent maintains full conversation history within a session — follow-up questions work naturally. Each call to `search_docs` retrieves the top 5 chunks from the KB.
 
 ---
 

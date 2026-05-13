@@ -60,8 +60,8 @@ _kb_id: str = ""
 
 
 @tool
-def search_vaisala_docs(query: str) -> str:
-    """Search the Vaisala technical documentation knowledge base for answers.
+def search_docs(query: str) -> str:
+    """Search the technical documentation knowledge base for answers.
 
     Args:
         query: The question or topic to search for in the documentation.
@@ -82,9 +82,9 @@ def build_agent() -> Agent:
     model = BedrockModel(model_id=DEFAULT_MODEL, region_name=AWS_REGION, max_tokens=2048)
     return Agent(
         model=model,
-        tools=[search_vaisala_docs],
+        tools=[search_docs],
         system_prompt=(
-            "You are a helpful technical support assistant for Vaisala products. "
+            "You are a helpful technical documentation assistant. "
             "Always search the documentation before answering questions. "
             "Be concise but complete. If the documentation doesn't contain the answer, "
             "say so clearly."
@@ -94,7 +94,7 @@ def build_agent() -> Agent:
 
 def print_banner(kb_id: str) -> None:
     print(f"\n{Colors.BOLD}{Colors.HEADER}{'=' * 60}{Colors.RESET}")
-    print(f"{Colors.BOLD}{Colors.HEADER} Vaisala KB Chat{Colors.RESET}")
+    print(f"{Colors.BOLD}{Colors.HEADER} Workshop KB Chat{Colors.RESET}")
     print(f"{Colors.BOLD}{Colors.HEADER} KB: {kb_id}  |  Region: {AWS_REGION}{Colors.RESET}")
     print(f"{Colors.BOLD}{Colors.HEADER}{'=' * 60}{Colors.RESET}")
     print(f"{Colors.DIM} Type your question and press Enter.{Colors.RESET}")

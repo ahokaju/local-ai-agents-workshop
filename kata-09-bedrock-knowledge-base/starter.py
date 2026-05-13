@@ -49,8 +49,8 @@ RUN_ID = uuid.uuid4().hex[:8]
 BUCKET_NAME = f"kata09-kb-docs-{RUN_ID}"
 VECTOR_BUCKET_NAME = f"kata09-vectors-{RUN_ID}"
 VECTOR_INDEX_NAME = "bedrock-kb-index"
-KB_NAME = f"kata09-vaisala-kb-{RUN_ID}"
-DS_NAME = "vaisala-docs"
+KB_NAME = f"kata09-workshop-kb-{RUN_ID}"
+DS_NAME = "workshop-docs"
 
 # State file — records the exact IDs/names of every resource created so that
 # cleanup.py can delete precisely those resources (not someone else's).
@@ -369,8 +369,8 @@ _kb_id: str = ""
 
 
 # TODO 6a: Add @tool decorator and implement KB retrieval
-def search_vaisala_docs(query: str) -> str:
-    """Search the Vaisala technical documentation knowledge base for answers.
+def search_docs(query: str) -> str:
+    """Search the technical documentation knowledge base for answers.
 
     Args:
         query: The question or topic to search for in the documentation.
@@ -390,7 +390,7 @@ def search_vaisala_docs(query: str) -> str:
     # chunks = [r["content"]["text"] for r in result["retrievalResults"]]
     # return "\n\n---\n\n".join(chunks) if chunks else "No results found."
 
-    return Colors.todo("TODO 6a: Implement search_vaisala_docs tool")
+    return Colors.todo("TODO 6a: Implement search_docs tool")
 
 
 def build_agent():
@@ -398,11 +398,11 @@ def build_agent():
 
     Steps:
         1. Create BedrockModel with DEFAULT_MODEL and AWS_REGION
-        2. Create Agent with model, tools=[search_vaisala_docs], system_prompt
+        2. Create Agent with model, tools=[search_docs], system_prompt
     """
     # TODO 6b: Build and return the agent
     # model = BedrockModel(model_id=DEFAULT_MODEL, region_name=AWS_REGION, max_tokens=1024)
-    # return Agent(model=model, tools=[search_vaisala_docs], system_prompt="...")
+    # return Agent(model=model, tools=[search_docs], system_prompt="...")
 
     print(Colors.todo("TODO 6b: Implement build_agent()"))
     return None
@@ -450,9 +450,9 @@ def main():
             return
 
         questions = [
-            "What are the steps to update VaiNet device firmware?",
-            "How do I replace an SSL/TLS certificate on a Vaisala device?",
-            "What wireless standards does the AP10 access point support?",
+            "What are the steps to update MeshLink device firmware?",
+            "How do I replace an SSL/TLS certificate on the device?",
+            "What wireless standards does the AP-100 access point support?",
         ]
 
         for question in questions:
